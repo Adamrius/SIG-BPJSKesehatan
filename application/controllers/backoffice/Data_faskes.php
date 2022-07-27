@@ -1,6 +1,7 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
+<?php defined('BASEPATH') or exit('No direct script access allowed');
 
-class Data_kriminalitas extends CI_Controller {
+class Data_faskes extends CI_Controller
+{
 
     function __construct()
     {
@@ -11,28 +12,28 @@ class Data_kriminalitas extends CI_Controller {
 
     public function Index()
     {
-        $this->breadcrumbs->push('Kriminalitas', 'backoffice/data_kriminalitas');
-        $this->breadcrumbs->push('Data Kriminalitas', '#');
+        $this->breadcrumbs->push('Faskes', 'backoffice/data_faskes');
+        $this->breadcrumbs->push('Data Faskes', '#');
 
         $data['breadcrumbs'] = $this->breadcrumbs->show();
-        $data['title']       = 'Data Kriminalitas';
+        $data['title']       = 'Data Faskes';
         $data['description'] = '';
         $data['keywords']    = '';
-        $data['page']        = 'backoffice/data_kriminalitas';
+        $data['page']        = 'backoffice/data_faskes';
         $this->load->view('backoffice/index', $data);
     }
 
-    function _sql() 
+    function _sql()
     {
         $this->db->select('kr.*');
-        $this->db->from('tb_kriminalitas kr');
+        $this->db->from('tb_faskes kr');
 
         return $this->db->get();
     }
 
     function datatables()
     {
-        $table  = 'tb_kriminalitas';
+        $table  = 'tb_faskes';
         $valid_columns = array(
             0 => 'id',
             1 => 'name',
@@ -46,26 +47,26 @@ class Data_kriminalitas extends CI_Controller {
         $no   = $_POST['start'];
         $data = array();
 
-        foreach($query->result_array() as $key) {
+        foreach ($query->result_array() as $key) {
             $no++;
 
             $data[] = array(
-                '<label class="checkbox-custome"><input type="checkbox" name="check-record" value="'.$key['id'].'" class="check-record"></label>',
+                '<label class="checkbox-custome"><input type="checkbox" name="check-record" value="' . $key['id'] . '" class="check-record"></label>',
                 $no,
-                '<a href="javascript:void(0);" data="'.$key['id'].'" class="detail-data">'.character_limiter($key['name'], 20).'</a>',
+                '<a href="javascript:void(0);" data="' . $key['id'] . '" class="detail-data">' . character_limiter($key['name'], 20) . '</a>',
                 $key['color'],
                 '<div class="dropdown">
                     <button class="btn p-0" type="button" id="dropdown-action" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-ellipsis-v font-20 icon-lg text-muted pb-3px"></i>
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdown-action">
-                        <a href="javascript:void(0);" data="'.$key['id'].'" class="dropdown-item font-16 py-2 detail-data">
+                        <a href="javascript:void(0);" data="' . $key['id'] . '" class="dropdown-item font-16 py-2 detail-data">
                             <i class="fa fa-eye mr-2"></i> <span>Detail</span>
                         </a>
-                        <a href="javascript:void(0);" data="'.$key['id'].'" id="edit-data" class="dropdown-item font-16 py-2">
+                        <a href="javascript:void(0);" data="' . $key['id'] . '" id="edit-data" class="dropdown-item font-16 py-2">
                             <i class="fa fa-edit mr-2"></i> <span>Edit</span>
                         </a>
-                        <a href="javascript:void(0);" data="'.$key['id'].'" id="delete-data" class="dropdown-item font-16 py-2 delete-data">
+                        <a href="javascript:void(0);" data="' . $key['id'] . '" id="delete-data" class="dropdown-item font-16 py-2 delete-data">
                             <i class="fa fa-trash-o mr-2"></i> <span>Delete</span>
                         </a>
                     </div>
@@ -83,10 +84,10 @@ class Data_kriminalitas extends CI_Controller {
         echo json_encode($response);
     }
 
-    function cek_heading() 
+    function cek_heading()
     {
         $value = $this->input->post('value');
-        $query = $this->db->query("SELECT name FROM tb_kriminalitas WHERE name = '".$value."' ")->result();
+        $query = $this->db->query("SELECT name FROM tb_faskes WHERE name = '" . $value . "' ")->result();
 
         if ($query) {
             $response = 0;
@@ -97,15 +98,15 @@ class Data_kriminalitas extends CI_Controller {
         echo json_encode($response);
     }
 
-    function add_data() 
+    function add_data()
     {
-        $data['name']   = $this->input->post('kriminalitas');
+        $data['name']   = $this->input->post('faskes');
         $data['color']  = $this->input->post('color');
         $data['status'] = 1;
 
-        $query = $this->db->insert('tb_kriminalitas', $data);
+        $query = $this->db->insert('tb_faskes', $data);
 
-        if($query) {
+        if ($query) {
             $response = 1;
         } else {
             $response = 2;
@@ -117,10 +118,10 @@ class Data_kriminalitas extends CI_Controller {
     {
         $id = $this->input->get('id');
 
-        $query = $this->db->query("SELECT kr.* FROM tb_kriminalitas kr WHERE kr.id = ".$id." ")->row_array();
+        $query = $this->db->query("SELECT kr.* FROM tb_faskes kr WHERE kr.id = " . $id . " ")->row_array();
 
         $response['id']           = $query['id'];
-        $response['kriminalitas'] = $query['name'];
+        $response['faskes'] = $query['name'];
         $response['color']        = $query['color'];
 
         echo json_encode($response);
@@ -130,12 +131,12 @@ class Data_kriminalitas extends CI_Controller {
     {
         $id = $this->input->post('id');
 
-        $data['name']  = $this->input->post('kriminalitas');
+        $data['name']  = $this->input->post('faskes');
         $data['color'] = $this->input->post('color');
 
-        $query = $this->main_model->update_data('tb_kriminalitas', $data, 'id', $id);
-        
-        if($query) {
+        $query = $this->main_model->update_data('tb_faskes', $data, 'id', $id);
+
+        if ($query) {
             $response = 3;
         } else {
             $response = 4;
@@ -147,19 +148,16 @@ class Data_kriminalitas extends CI_Controller {
     {
         $method = $this->input->post('method');
 
-        if($method == 'single')
-        {
+        if ($method == 'single') {
             $id = $this->input->post('id');
 
-            $query = $this->db->query("DELETE FROM tb_kriminalitas WHERE id = '".$id."'");
+            $query = $this->db->query("DELETE FROM tb_faskes WHERE id = '" . $id . "'");
 
-            if($query) {
+            if ($query) {
                 $response = 1;
             }
             echo json_encode($response);
-        }
-        else
-        {
+        } else {
             $json = $this->input->post('id');
             $id = array();
 
@@ -171,14 +169,13 @@ class Data_kriminalitas extends CI_Controller {
                 $id_str = "";
                 $id_str = implode(',', $id);
 
-                $query = $this->db->query("DELETE FROM tb_kriminalitas WHERE id in (".$id_str.")");
+                $query = $this->db->query("DELETE FROM tb_faskes WHERE id in (" . $id_str . ")");
 
-                if($query) {
+                if ($query) {
                     $response = 2;
                 }
                 echo json_encode($response);
             }
         }
     }
-
 }
