@@ -12,7 +12,7 @@ class Kategori_faskes extends CI_Controller
 
     public function Index()
     {
-        $this->breadcrumbs->push('Kesehatan', 'backoffice/kategori_faskes');
+        $this->breadcrumbs->push('Faskes', 'backoffice/kategori_faskes');
         $this->breadcrumbs->push('Kategori Fasilitas Kesehatan', '#');
 
         $data['breadcrumbs'] = $this->breadcrumbs->show();
