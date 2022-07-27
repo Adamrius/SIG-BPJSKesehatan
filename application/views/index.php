@@ -46,16 +46,52 @@
     <!-- lazyload -->
     <script src="<?php echo base_url(); ?>assets/front/vendor/lazyload/jquery.lazy.min.js"></script>
 
+    <!-- main -->
+    <!-- <script src="<?php echo base_url(); ?>assets/front/js/main.js"></script> -->
 </head>
 
 <body oncontextmenu="return false" data-spy="scroll" data-target=".site-navbar-target" data-offset="300" data-background="<?php echo base_url(); ?>assets/front/img/body-bg.png">
 
     <!-- site wrap -->
     <div class="site-wrap">
+
         <main class="wrap-main">
             <?php $this->load->view($page); ?>
         </main>
+
+
+        <footer class="footer d-none">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="copyright">&copy; <script>
+                                document.write(new Date().getFullYear())
+                            </script> Tyas Photo</p>
+                    </div>
+
+                    <div class="col-md-6">
+                        <ul class="list-inline">
+                            <li class="list-inline-item"><a href="<?php echo base_url(); ?>terms-condition">Terms & Condition</a></li>
+                            <!-- <li class="list-inline-item"><a href="#">Privacy Policy</a></li> -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </div>
+
+
+    <script type="text/javascript">
+        document.addEventListener('contextmenu', event => event.preventDefault());
+
+        document.onkeydown = function(e) {
+            if (e.ctrlKey && (e.keyCode === 16 || e.keyCode === 17 || e.keyCode === 67 || e.keyCode === 83 || e.keyCode === 85 || e.keyCode === 86 || e.keyCode === 87 || e.keyCode === 117)) {
+                return false;
+            } else {
+                return true;
+            }
+        };
+    </script>
 
 </body>
 
