@@ -98,8 +98,8 @@
                 zoom: 11,
                 center: new google.maps.LatLng(-7.4459451, 109.0489305),
                 mapTypeId: google.maps.MapTypeId.ROADMAP,
-                mapTypeControl: false,
-                streetViewControl: false
+                mapTypeControl: true,
+                streetViewControl: true
             };
 
             var map = new google.maps.Map(document.getElementById('maps'), options);
