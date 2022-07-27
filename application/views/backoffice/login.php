@@ -9,13 +9,13 @@
                     <div class="row">
                         <div class="col-md-4 pr-md-0 d-none d-md-block">
                             <div class="auth-thumbnails">
-                                <img class="auth-left-wrapper mx-auto img-fluid" src="<?php echo base_url();?>assets/backoffice/images/login-thumbnails.png">
+                                <img class="auth-left-wrapper mx-auto img-fluid" src="<?php echo base_url(); ?>assets/backoffice/images/admin.jpeg">
                             </div>
                         </div>
 
                         <div class="col-md-8 pl-md-0 d-md-flex align-items-center h-100">
                             <div class="auth-form py-5">
-                                <h2 class="text-accent fw-bold noble-ui-logo mb-2">Administrator</h2>
+                                <h2 class="text-accent fw-bold noble-ui-logo mb-2">Login Admin</h2>
                                 <h5 class="text-muted font-weight-normal mb-4">Masukan email dan password Anda.</h5>
 
                                 <div class="feedback-login"></div>
@@ -47,17 +47,18 @@
 
 
 <script>
-    $.getScript("<?php echo base_url();?>assets/backoffice/js/custome.js");
+    $.getScript("<?php echo base_url(); ?>assets/backoffice/js/custome.js");
 
     $(document).ready(function() {
-
         $.validator.addMethod("cek_email", function(value, element) {
             $.ajax({
-                method : "post",
-                url    : '<?php echo base_url();?>backoffice/login/cek_email',
-                data   : { value:value },
+                method: "post",
+                url: '<?php echo base_url(); ?>backoffice/login/cek_email',
+                data: {
+                    value: value
+                },
                 success: function(response) {
-                    if(response == 1) {
+                    if (response == 1) {
                         result = true;
                     } else {
                         result = false;
@@ -106,29 +107,25 @@
 
         $('#form-login').submit(function(e) {
             e.preventDefault();
-
             if (validate_login.valid()) {
                 $('#submit-form').buttonLoader('start');
-
                 $.ajax({
-                    url      : '<?php echo base_url();?>backoffice/login/post_login',
-                    method   : 'post',
-                    data     : new FormData(this),
-                    dataType : 'json',
-                    contentType : false,
-                    processData : false,
-                    success:function(response) {
+                    url: '<?php echo base_url(); ?>backoffice/login/post_login',
+                    method: 'post',
+                    data: new FormData(this),
+                    dataType: 'json',
+                    contentType: false,
+                    processData: false,
+                    success: function(response) {
                         $('#submit-form').buttonLoader('stop');
-
-                        if(response.status == 1) {
+                        if (response.status == 1) {
                             $("#form-login")[0].reset();
-                            top.location.href="<?php echo base_url();?>backoffice/dashboard";
-                        }
-                        else {
+                            top.location.href = "<?php echo base_url(); ?>backoffice/dashboard";
+                        } else {
                             $('.feedback-login').html(
-                                '<div class="alert alert-pro alert-danger alert-fade mb-2">'+
-                                    '<button type="button" class="close icon" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+
-                                    '<span>'+response.message+'</span>'+
+                                '<div class="alert alert-pro alert-danger alert-fade mb-2">' +
+                                '<button type="button" class="close icon" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
+                                '<span>' + response.message + '</span>' +
                                 '</div>'
                             );
                         }

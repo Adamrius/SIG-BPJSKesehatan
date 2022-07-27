@@ -28,7 +28,6 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
-
         load_data_faskes('')
 
         function load_data_faskes(id_faskes) {
@@ -41,11 +40,8 @@
                 cache: false,
                 dataType: 'json',
                 success: function(response) {
-
                     console.log(response)
-
                     var data_faskes = '';
-
                     $.each(response.data, function(i, val) {
                         data_faskes +=
                             '<a class="list-item trigg-filter" data="' + val.id + '">' +
@@ -53,23 +49,16 @@
                             '<div class="text section-description">' + val.name + ' (' + val.total + ')</div>' +
                             '</a>';
                     });
-
                     $('#load_data_faskes').html(data_faskes);
-
-
                     var data_maps_array = [];
-
                     $.each(response.laporan, function(i2, val2) {
-
                         var thumbnails = '';
-
                         if (val2.foto) {
                             thumbnails =
                                 '<div class="wrap-thumb">' +
                                 '<img src="' + val2.foto + '" class="img-fluid">' +
                                 '</div>';
                         }
-
                         var content_window =
                             '<div class="widget-info-area">' +
                             thumbnails +
@@ -81,13 +70,9 @@
                             '</ul>' +
                             '</div>' +
                             '</div>';
-
                         var data_maps = [content_window, val2.latitude, val2.longitude, val2.color];
-
                         data_maps_array.push(data_maps);
-
                     });
-
                     initMap(data_maps_array);
                 }
             });
@@ -101,14 +86,11 @@
                 mapTypeControl: true,
                 streetViewControl: true
             };
-
             var map = new google.maps.Map(document.getElementById('maps'), options);
             var data_maps = data_maps_array;
             var infowindow = new google.maps.InfoWindow();
             var marker, i;
-
             for (i = 0; i < data_maps.length; i++) {
-
                 marker = new google.maps.Marker({
                     map: map,
                     position: new google.maps.LatLng(data_maps[i][1], data_maps[i][2]),
@@ -125,7 +107,6 @@
                         anchor: new google.maps.Point(1, 2),
                     },
                 });
-
                 google.maps.event.addListener(marker, 'click', (function(marker, i) {
                     return function() {
                         infowindow.setContent(data_maps[i][0]);
@@ -134,9 +115,7 @@
                 })(marker, i));
             }
         }
-
         $(document).on('click', '.trigg-filter', function() {
-
             var id_faskes = $(this).attr('data');
             load_data_faskes(id_faskes);
         });
