@@ -12,11 +12,11 @@ class Faskes extends CI_Controller
 
     public function Index()
     {
-        $this->breadcrumbs->push('Kejahatan', 'backoffice/faskes/faskes');
-        $this->breadcrumbs->push('Data Kejahatan', '#');
+        $this->breadcrumbs->push('Kesehatan', 'backoffice/faskes/faskes');
+        $this->breadcrumbs->push('Data Kesehatan', '#');
 
         $data['breadcrumbs'] = $this->breadcrumbs->show();
-        $data['title']       = 'Data Kejahatan';
+        $data['title']       = 'Data Kesehatan';
         $data['description'] = '';
         $data['keywords']    = '';
         $data['page']        = 'backoffice/faskes/faskes';
@@ -178,13 +178,13 @@ class Faskes extends CI_Controller
 
     function add()
     {
-        $this->breadcrumbs->push('Kejahatan', 'backoffice/faskes/faskes');
-        $this->breadcrumbs->push('Tambah Data Kejahatan', '#');
+        $this->breadcrumbs->push('Kesehatan', 'backoffice/faskes/faskes');
+        $this->breadcrumbs->push('Tambah Data Kesehatan', '#');
 
         $data['param']       = 'add';
         $data['id_laporan']  = '';
         $data['breadcrumbs'] = $this->breadcrumbs->show();
-        $data['title']       = 'Tambah Data Kejahatan';
+        $data['title']       = 'Tambah Data Kesehatan';
         $data['description'] = '';
         $data['keywords']    = '';
         $data['page']        = 'backoffice/faskes/faskes_add';
@@ -193,13 +193,13 @@ class Faskes extends CI_Controller
 
     function edit($id_laporan_enc)
     {
-        $this->breadcrumbs->push('Kejahatan', 'backoffice/faskes/faskes');
-        $this->breadcrumbs->push('Tambah Data Kejahatan', '#');
+        $this->breadcrumbs->push('Kesehatan', 'backoffice/faskes/faskes');
+        $this->breadcrumbs->push('Tambah Data Kesehatan', '#');
 
         $data['param']       = 'edit';
         $data['id_laporan']  = $id_laporan_enc;
         $data['breadcrumbs'] = $this->breadcrumbs->show();
-        $data['title']       = 'Edit Data Kejahatan';
+        $data['title']       = 'Edit Data Kesehatan';
         $data['description'] = '';
         $data['keywords']    = '';
         $data['page']        = 'backoffice/faskes/faskes_add';
