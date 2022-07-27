@@ -136,25 +136,25 @@
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#collapse-data-kesehatan" role="button" aria-expanded="false" aria-controls="icons">
                             <i class="link-icon" data-feather="monitor"></i>
-                            <span class="link-title">Data Kesehatan</span>
+                            <span class="link-title">Fasilitas Kesehatan</span>
                             <i class="link-arrow" data-feather="chevron-down"></i>
                         </a>
                         <div class="collapse" id="collapse-data-kesehatan">
                             <ul class="nav sub-menu">
                                 <li class="nav-item">
-                                    <a href="<?php echo base_url(); ?>backoffice/faskes/faskes" class="nav-link">Data Kesehatan</a>
+                                    <a href="<?php echo base_url(); ?>backoffice/faskes/faskes" class="nav-link">Data Fasilitas Kesehatan</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="<?php echo base_url(); ?>backoffice/faskes/faskes/add" class="nav-link">Input Kesehatan</a>
+                                    <a href="<?php echo base_url(); ?>backoffice/faskes/faskes/add" class="nav-link">Input Fasilitas Kesehatan</a>
                                 </li>
                             </ul>
                         </div>
                     </li>
 
                     <li class="nav-item">
-                        <a href="<?php echo base_url(); ?>backoffice/data_faskes" class="nav-link">
+                        <a href="<?php echo base_url(); ?>backoffice/kategori_faskes" class="nav-link">
                             <i class="link-icon" data-feather="users"></i>
-                            <span class="link-title">Data Fasilitas Kesehatan</span>
+                            <span class="link-title">Kategori Faskes</span>
                         </a>
                     </li>
 
