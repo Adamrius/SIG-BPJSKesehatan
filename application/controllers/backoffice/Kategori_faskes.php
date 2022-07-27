@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
 
-class Data_faskes extends CI_Controller
+class Kategori_faskes extends CI_Controller
 {
 
     function __construct()
@@ -12,14 +12,14 @@ class Data_faskes extends CI_Controller
 
     public function Index()
     {
-        $this->breadcrumbs->push('Fasilitas Kesehatan', 'backoffice/data_faskes');
-        $this->breadcrumbs->push('Data Fasilitas Kesehatan', '#');
+        $this->breadcrumbs->push('Kesehatan', 'backoffice/kategori_faskes');
+        $this->breadcrumbs->push('Kategori Fasilitas Kesehatan', '#');
 
         $data['breadcrumbs'] = $this->breadcrumbs->show();
-        $data['title']       = 'Seluruh Fasilitas Kesehatan';
+        $data['title']       = 'Kategori Fasilitas Kesehatan';
         $data['description'] = '';
         $data['keywords']    = '';
-        $data['page']        = 'backoffice/data_faskes';
+        $data['page']        = 'backoffice/kategori_faskes';
         $this->load->view('backoffice/index', $data);
     }
 

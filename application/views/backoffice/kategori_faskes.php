@@ -25,8 +25,8 @@
                             <tr>
                                 <th class="text-center py-0"><label class="checkbox-custome"><input type="checkbox" name="check-all-record"></label></th>
                                 <th class="text-center">Nomor</th>
-                                <th class="text-center">Kategori Fasilitas</th>
-                                <th class="text-center">Warna</th>
+                                <th class="text-center">Kategori</th>
+                                <th class="text-center">Kode Warna</th>
                                 <th class="text-center" width="15%"></th>
                             </tr>
                         </thead>
@@ -111,7 +111,7 @@
         var table = $('#table-data').DataTable({
             ajax: {
                 type: 'POST',
-                url: "<?php echo base_url(); ?>backoffice/data_faskes/datatables",
+                url: "<?php echo base_url(); ?>backoffice/kategori_faskes/datatables",
                 complete: function(data, type) {
                     json = data.responseJSON;
                 },
@@ -154,7 +154,7 @@
         $.validator.addMethod("cek_heading", function(value, element) {
             $.ajax({
                 method: "post",
-                url: '<?php echo base_url(); ?>backoffice/data_faskes/cek_heading',
+                url: '<?php echo base_url(); ?>backoffice/kategori_faskes/cek_heading',
                 data: {
                     value: value
                 },
@@ -192,11 +192,11 @@
             },
             messages: {
                 faskes: {
-                    required: "Nama kesehatan harus diisi.",
-                    cek_heading: "Nama kesehatan sudah digunakan"
+                    required: "Tidak boleh Kosong",
+                    cek_heading: "Sudah terdaftar"
                 },
                 color: {
-                    required: "Warna harus diisi.",
+                    required: "Tidak boleh Kosong.",
                 },
             },
             highlight: function(element, errorClass) {
@@ -235,7 +235,7 @@
 
             $.ajax({
                 type: "GET",
-                url: "<?php echo base_url(); ?>backoffice/data_faskes/get_data",
+                url: "<?php echo base_url(); ?>backoffice/kategori_faskes/get_data",
                 dataType: "json",
                 data: {
                     id: id
@@ -258,9 +258,9 @@
                 $('#submit-form').buttonLoader('start');
 
                 if (save_method == 'add') {
-                    url = "<?php echo base_url(); ?>backoffice/data_faskes/add_data";
+                    url = "<?php echo base_url(); ?>backoffice/kategori_faskes/add_data";
                 } else {
-                    url = "<?php echo base_url(); ?>backoffice/data_faskes/edit_data";
+                    url = "<?php echo base_url(); ?>backoffice/kategori_faskes/edit_data";
                 }
 
                 $.ajax({
@@ -314,7 +314,7 @@
 
             $.ajax({
                 type: "GET",
-                url: "<?php echo base_url(); ?>backoffice/data_faskes/get_data",
+                url: "<?php echo base_url(); ?>backoffice/kategori_faskes/get_data",
                 dataType: "json",
                 data: {
                     id: id
@@ -347,7 +347,7 @@
 
             $.ajax({
                 type: "POST",
-                url: "<?php echo base_url(); ?>backoffice/data_faskes/delete_data",
+                url: "<?php echo base_url(); ?>backoffice/kategori_faskes/delete_data",
                 dataType: "JSON",
                 data: {
                     id: id,
