@@ -1274,13 +1274,13 @@
 
 .section-maps .bottom-section { position: absolute; bottom: 0; left: 0; width: 100%; z-index: 12; background: var(--white); padding: 0.313rem 0; border-top-left-radius: 0.625rem; border-top-right-radius: 0.625rem; }
 
-.section-maps .list-kriminalitas { display: flex; justify-content: center; flex-wrap: nowrap; flex-direction: row; }
-.section-maps .list-kriminalitas .list-item { position: relative; display: flex; align-items: center; padding: 0.625rem 0.313rem; }
-.section-maps .list-kriminalitas .list-item:before { content: ''; position: absolute; right: -0.625rem; top: 0; width: 1px; height: 100%; background: var(--text2); }
-.section-maps .list-kriminalitas .list-item:not(:last-child) { margin-right: 1.25rem; }
-.section-maps .list-kriminalitas .list-item .marker { margin-right: 0.625rem; font-size: 1.25rem; }
-.section-maps .list-kriminalitas .list-item .marker i.fa {  }
-.section-maps .list-kriminalitas .list-item .text { font-weight: 600; }
+.section-maps .list-faskes { display: flex; justify-content: center; flex-wrap: nowrap; flex-direction: row; }
+.section-maps .list-faskes .list-item { position: relative; display: flex; align-items: center; padding: 0.625rem 0.313rem; }
+.section-maps .list-faskes .list-item:before { content: ''; position: absolute; right: -0.625rem; top: 0; width: 1px; height: 100%; background: var(--text2); }
+.section-maps .list-faskes .list-item:not(:last-child) { margin-right: 1.25rem; }
+.section-maps .list-faskes .list-item .marker { margin-right: 0.625rem; font-size: 1.25rem; }
+.section-maps .list-faskes .list-item .marker i.fa {  }
+.section-maps .list-faskes .list-item .text { font-weight: 600; }
 
 .gmnoprint { margin-bottom: 2.5rem; }
 .widget-info-area { width: 17.625rem; display: flex; flex-direction: column; }
