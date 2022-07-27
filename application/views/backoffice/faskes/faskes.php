@@ -33,7 +33,7 @@
                                 <th class="text-center py-0"><label class="checkbox-custome"><input type="checkbox" name="check-all-record"></label></th>
                                 <th class="text-center">No</th>
                                 <th class="text-center">Kecamatan</th>
-                                <th class="text-center">Kesehatan</th>
+                                <th class="text-center">Kategori</th>
                                 <th class="text-center">Alamat</th>
                                 <th class="text-center">Tanggal</th>
                                 <th class="text-center" width="15%"></th>
@@ -62,7 +62,7 @@
                             <p class="text-muted" id="d_kecamatan"></p>
                         </div>
                         <div class="mb-3">
-                            <label class="tx-11 font-weight-bold mb-0 text-uppercase">Kesehatan :</label>
+                            <label class="tx-11 font-weight-bold mb-0 text-uppercase">Kategori :</label>
                             <p class="text-muted" id="d_faskes"></p>
                         </div>
                         <div class="mb-3">

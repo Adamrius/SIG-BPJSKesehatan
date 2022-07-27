@@ -12,11 +12,11 @@ class Faskes extends CI_Controller
 
     public function Index()
     {
-        $this->breadcrumbs->push('Kesehatan', 'backoffice/faskes/faskes');
-        $this->breadcrumbs->push('Data Kesehatan', '#');
+        $this->breadcrumbs->push('Fasilitas Kesehatan', 'backoffice/faskes/faskes');
+        $this->breadcrumbs->push('Data Fasilitas Kesehatan', '#');
 
         $data['breadcrumbs'] = $this->breadcrumbs->show();
-        $data['title']       = 'Data Kesehatan';
+        $data['title']       = 'Data Fasilitas Kesehatan';
         $data['description'] = '';
         $data['keywords']    = '';
         $data['page']        = 'backoffice/faskes/faskes';
@@ -27,14 +27,14 @@ class Faskes extends CI_Controller
     {
         $this->db->select('
             l.*, 
-            kr.name as nama_faskes,
-            kr.color, 
+            fk.name as nama_faskes,
+            fk.color, 
             kec.nama as nama_kecamatan, 
             kec.kode
         ');
         $this->db->from('tb_laporan l');
         $this->db->join('tb_kecamatan kec', 'kec.id = l.id_kecamatan', 'left');
-        $this->db->join('tb_faskes kr', 'kr.id = l.id_faskes', 'left');
+        $this->db->join('tb_faskes fk', 'fk.id = l.id_faskes', 'left');
 
         return $this->db->get();
     }
@@ -109,13 +109,13 @@ class Faskes extends CI_Controller
         $sql = "
             SELECT 
             l.*, 
-            kr.name as nama_faskes,
-            kr.color, 
+            fk.name as nama_faskes,
+            fk.color, 
             kec.nama as nama_kecamatan, 
             kec.kode
             FROM tb_laporan l 
             LEFT JOIN tb_kecamatan kec ON kec.id = l.id_kecamatan 
-            LEFT JOIN tb_faskes kr ON kr.id = l.id_faskes 
+            LEFT JOIN tb_faskes fk ON fk.id = l.id_faskes 
             WHERE l.id = " . $id . "
         ";
         $query = $this->db->query($sql)->row_array();
@@ -178,13 +178,13 @@ class Faskes extends CI_Controller
 
     function add()
     {
-        $this->breadcrumbs->push('Kesehatan', 'backoffice/faskes/faskes');
-        $this->breadcrumbs->push('Tambah Data Kesehatan', '#');
+        $this->breadcrumbs->push('Fasilitas Kesehatan', 'backoffice/faskes/faskes');
+        $this->breadcrumbs->push('Input Fasilitas Kesehatan', '#');
 
         $data['param']       = 'add';
         $data['id_laporan']  = '';
         $data['breadcrumbs'] = $this->breadcrumbs->show();
-        $data['title']       = 'Tambah Data Kesehatan';
+        $data['title']       = 'Input Fasilitas Kesehatan';
         $data['description'] = '';
         $data['keywords']    = '';
         $data['page']        = 'backoffice/faskes/faskes_add';
@@ -193,13 +193,13 @@ class Faskes extends CI_Controller
 
     function edit($id_laporan_enc)
     {
-        $this->breadcrumbs->push('Kesehatan', 'backoffice/faskes/faskes');
-        $this->breadcrumbs->push('Tambah Data Kesehatan', '#');
+        $this->breadcrumbs->push('Fasilitas Kesehatan', 'backoffice/faskes/faskes');
+        $this->breadcrumbs->push('Edit Fasilitas Kesehatan', '#');
 
         $data['param']       = 'edit';
         $data['id_laporan']  = $id_laporan_enc;
         $data['breadcrumbs'] = $this->breadcrumbs->show();
-        $data['title']       = 'Edit Data Kesehatan';
+        $data['title']       = 'Edit Data Fasilitas Kesehatan';
         $data['description'] = '';
         $data['keywords']    = '';
         $data['page']        = 'backoffice/faskes/faskes_add';

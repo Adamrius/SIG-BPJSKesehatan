@@ -2,7 +2,7 @@
     <div class="col-md-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <h6 class="card-title">Tambah Data Fasilitas Kesehatan</h6>
+                <h6 class="card-title">Tambah Data</h6>
 
                 <form method="post" id="form-add-data" enctype="multipart/form-data" role="form" class="">
                     <div class="row">
@@ -19,12 +19,12 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="form-label">Jenis Kesehatan</label>
-                                <select name="faskes" id="faskes" data-placeholder="Pilih kesehatan" data-allow-clear="false" class="select2 form-select form-control">
-                                    <option value="">Pilih kesehatan</option>
+                                <label class="form-label">Kategori</label>
+                                <select name="faskes" id="faskes" data-placeholder="Pilih kategori" data-allow-clear="false" class="select2 form-select form-control">
+                                    <option value="">Pilih kategori</option>
                                     <?php $get_faskes = $this->db->query("SELECT * FROM tb_faskes ORDER BY id DESC")->result_array(); ?>
-                                    <?php foreach ($get_faskes as $key_kr) { ?>
-                                        <option value="<?php echo $key_kr['id']; ?>"><?php echo $key_kr['name']; ?></option>
+                                    <?php foreach ($get_faskes as $key_fk) { ?>
+                                        <option value="<?php echo $key_fk['id']; ?>"><?php echo $key_fk['name']; ?></option>
                                     <?php }; ?>
                                 </select>
                             </div>
@@ -122,23 +122,23 @@
             },
             messages: {
                 kecamatan: {
-                    required: "Silahkan pilih kecamatan.",
+                    required: "Pilih Kecamatan",
                 },
                 faskes: {
-                    required: "Silahkan pilih jenis kesehatan.",
+                    required: "Pilih Kategori",
                 },
                 alamat: {
-                    required: "Alamat harus diisi."
+                    required: "Alamat harus diisi"
                 },
                 image: {
                     extension: "Unggah foto dengan format .PNG/.JPG/.JPEG",
                     filesize: "File maksimal 1 Mbps."
                 },
                 longitude: {
-                    required: "Longitude harus diisi."
+                    required: "Longitude harus diisi"
                 },
                 latitude: {
-                    required: "Latitude harus diisi."
+                    required: "Latitude harus diisi"
                 },
             },
             highlight: function(element, errorClass) {
