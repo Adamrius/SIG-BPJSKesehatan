@@ -2,7 +2,7 @@
     <div class="container-fluid gx-0">
         <div class="top-section">
             <div class="container">
-                <h2>PEMETAAN DAERAH RAWAN KRIMINALITAS DI BANYUMAS</h2>
+                <h2>PEMETAAN FASILITAS KESEHATAN BPJS WILAYAH BANYUMAS</h2>
             </div>
         </div>
 
@@ -15,7 +15,7 @@
         <div class="bottom-section">
             <div class="container">
                 <div class="scrollable h-scrollable">
-                    <div class="list-kriminalitas" id="load_data_kriminalitas"></div>
+                    <div class="list-faskes" id="load_data_faskes"></div>
                 </div>
             </div>
         </div>
@@ -29,14 +29,14 @@
 <script type="text/javascript">
     $(document).ready(function() {
 
-        load_data_kriminalitas('')
+        load_data_faskes('')
 
-        function load_data_kriminalitas(id_kriminalitas) {
+        function load_data_faskes(id_faskes) {
             $.ajax({
                 method: 'POST',
-                url: '<?php echo base_url(); ?>post/fetch_data_kriminalitas',
+                url: '<?php echo base_url(); ?>post/fetch_data_faskes',
                 data: {
-                    id_kriminalitas: id_kriminalitas
+                    id_faskes: id_faskes
                 },
                 cache: false,
                 dataType: 'json',
@@ -44,17 +44,17 @@
 
                     console.log(response)
 
-                    var data_kriminalitas = '';
+                    var data_faskes = '';
 
                     $.each(response.data, function(i, val) {
-                        data_kriminalitas +=
+                        data_faskes +=
                             '<a class="list-item trigg-filter" data="' + val.id + '">' +
                             '<div class="marker"><i class="fa fa-map-marker-alt" style="color: ' + val.color + ';"></i></div>' +
                             '<div class="text section-description">' + val.name + ' (' + val.total + ')</div>' +
                             '</a>';
                     });
 
-                    $('#load_data_kriminalitas').html(data_kriminalitas);
+                    $('#load_data_faskes').html(data_faskes);
 
 
                     var data_maps_array = [];
@@ -74,7 +74,7 @@
                             '<div class="widget-info-area">' +
                             thumbnails +
                             '<div class="wrap-info">' +
-                            '<h5>' + val2.kriminalitas + '</h5>' +
+                            '<h5>' + val2.faskes + '</h5>' +
                             '<ul>' +
                             '<li><span>' + val2.alamat + '</span></li>' +
                             '<li><span class="fw-500">' + val2.kecamatan + '</span></li>' +
@@ -137,8 +137,8 @@
 
         $(document).on('click', '.trigg-filter', function() {
 
-            var id_kriminalitas = $(this).attr('data');
-            load_data_kriminalitas(id_kriminalitas);
+            var id_faskes = $(this).attr('data');
+            load_data_faskes(id_faskes);
         });
     });
 </script>
