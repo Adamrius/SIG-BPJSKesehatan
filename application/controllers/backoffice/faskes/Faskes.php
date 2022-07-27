@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
 
-class Kriminalitas extends CI_Controller
+class Faskes extends CI_Controller
 {
 
     function __construct()
@@ -12,14 +12,14 @@ class Kriminalitas extends CI_Controller
 
     public function Index()
     {
-        $this->breadcrumbs->push('Kejahatan', 'backoffice/kriminalitas/kriminalitas');
+        $this->breadcrumbs->push('Kejahatan', 'backoffice/faskes/faskes');
         $this->breadcrumbs->push('Data Kejahatan', '#');
 
         $data['breadcrumbs'] = $this->breadcrumbs->show();
         $data['title']       = 'Data Kejahatan';
         $data['description'] = '';
         $data['keywords']    = '';
-        $data['page']        = 'backoffice/kriminalitas/kriminalitas';
+        $data['page']        = 'backoffice/faskes/faskes';
         $this->load->view('backoffice/index', $data);
     }
 
@@ -27,14 +27,14 @@ class Kriminalitas extends CI_Controller
     {
         $this->db->select('
             l.*, 
-            kr.name as nama_kriminalitas,
+            kr.name as nama_faskes,
             kr.color, 
             kec.nama as nama_kecamatan, 
             kec.kode
         ');
         $this->db->from('tb_laporan l');
         $this->db->join('tb_kecamatan kec', 'kec.id = l.id_kecamatan', 'left');
-        $this->db->join('tb_kriminalitas kr', 'kr.id = l.id_kriminalitas', 'left');
+        $this->db->join('tb_faskes kr', 'kr.id = l.id_faskes', 'left');
 
         return $this->db->get();
     }
@@ -43,7 +43,7 @@ class Kriminalitas extends CI_Controller
     {
         $valid_columns = array(
             0 => 'id',
-            1 => 'nama_kriminalitas',
+            1 => 'nama_faskes',
             2 => 'nama_kecamatan',
         );
 
@@ -64,13 +64,13 @@ class Kriminalitas extends CI_Controller
                 $tanggal = date('d-m-Y H:i', strtotime($key['tanggal']));
             }
 
-            $url_edit = base_url() . 'backoffice/kriminalitas/kriminalitas/edit/' . encrypt_url($key['id']);
+            $url_edit = base_url() . 'backoffice/faskes/faskes/edit/' . encrypt_url($key['id']);
 
             $data[] = array(
                 '<label class="checkbox-custome"><input type="checkbox" name="check-record" value="' . $key['id'] . '" class="check-record"></label>',
                 $no,
                 '<a href="javascript:void(0)" class="detail-data" data="' . $key['id'] . '">' . $key['nama_kecamatan'] . '</a>',
-                character_limiter($key['nama_kriminalitas'], 40),
+                character_limiter($key['nama_faskes'], 40),
                 character_limiter($key['alamat'], 40),
                 $tanggal,
                 '<div class="dropdown">
@@ -109,13 +109,13 @@ class Kriminalitas extends CI_Controller
         $sql = "
             SELECT 
             l.*, 
-            kr.name as nama_kriminalitas,
+            kr.name as nama_faskes,
             kr.color, 
             kec.nama as nama_kecamatan, 
             kec.kode
             FROM tb_laporan l 
             LEFT JOIN tb_kecamatan kec ON kec.id = l.id_kecamatan 
-            LEFT JOIN tb_kriminalitas kr ON kr.id = l.id_kriminalitas 
+            LEFT JOIN tb_faskes kr ON kr.id = l.id_faskes 
             WHERE l.id = " . $id . "
         ";
         $query = $this->db->query($sql)->row_array();
@@ -157,13 +157,13 @@ class Kriminalitas extends CI_Controller
 
         // foto
         if ($query['foto']) {
-            $foto = base_url() . 'assets/files/kriminalitas/' . $query['foto'];
+            $foto = base_url() . 'assets/files/faskes/' . $query['foto'];
         } else {
             $foto = base_url() . 'assets/files/no-images.png';
         }
 
         $response['kecamatan']        = $query['nama_kecamatan'];
-        $response['kriminalitas']     = $query['nama_kriminalitas'];
+        $response['faskes']     = $query['nama_faskes'];
         $response['color']            = $query['color'];
         $response['alamat']           = $alamat;
         $response['keterangan']       = $keterangan;
@@ -178,7 +178,7 @@ class Kriminalitas extends CI_Controller
 
     function add()
     {
-        $this->breadcrumbs->push('Kejahatan', 'backoffice/kriminalitas/kriminalitas');
+        $this->breadcrumbs->push('Kejahatan', 'backoffice/faskes/faskes');
         $this->breadcrumbs->push('Tambah Data Kejahatan', '#');
 
         $data['param']       = 'add';
@@ -187,13 +187,13 @@ class Kriminalitas extends CI_Controller
         $data['title']       = 'Tambah Data Kejahatan';
         $data['description'] = '';
         $data['keywords']    = '';
-        $data['page']        = 'backoffice/kriminalitas/kriminalitas_add';
+        $data['page']        = 'backoffice/faskes/faskes_add';
         $this->load->view('backoffice/index', $data);
     }
 
     function edit($id_laporan_enc)
     {
-        $this->breadcrumbs->push('Kejahatan', 'backoffice/kriminalitas/kriminalitas');
+        $this->breadcrumbs->push('Kejahatan', 'backoffice/faskes/faskes');
         $this->breadcrumbs->push('Tambah Data Kejahatan', '#');
 
         $data['param']       = 'edit';
@@ -202,7 +202,7 @@ class Kriminalitas extends CI_Controller
         $data['title']       = 'Edit Data Kejahatan';
         $data['description'] = '';
         $data['keywords']    = '';
-        $data['page']        = 'backoffice/kriminalitas/kriminalitas_add';
+        $data['page']        = 'backoffice/faskes/faskes_add';
         $this->load->view('backoffice/index', $data);
     }
 
@@ -222,7 +222,7 @@ class Kriminalitas extends CI_Controller
         }
 
         $data['id_kecamatan']    = $this->input->post('kecamatan');
-        $data['id_kriminalitas'] = $this->input->post('kriminalitas');
+        $data['id_faskes'] = $this->input->post('faskes');
         $data['alamat']          = $this->input->post('alamat');
         $data['keterangan']      = $this->input->post('keterangan');
         $data['longitude']       = $this->input->post('longitude');
@@ -251,7 +251,7 @@ class Kriminalitas extends CI_Controller
         }
 
         $data['id_kecamatan']    = $this->input->post('kecamatan');
-        $data['id_kriminalitas'] = $this->input->post('kriminalitas');
+        $data['id_faskes'] = $this->input->post('faskes');
         $data['alamat']          = $this->input->post('alamat');
         $data['keterangan']      = $this->input->post('keterangan');
         $data['longitude']       = $this->input->post('longitude');
@@ -271,17 +271,17 @@ class Kriminalitas extends CI_Controller
 
     private function upload_image($name)
     {
-        $config['upload_path']   = './assets/files/kriminalitas/';
+        $config['upload_path']   = './assets/files/faskes/';
         $config['allowed_types'] = 'jpg|jpeg|png';
-        $config['file_name']     = 'kriminalitas-' . substr(str_shuffle('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'), 0, 10);
+        $config['file_name']     = 'faskes-' . substr(str_shuffle('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'), 0, 10);
 
         if ($this->input->post('param') == 'edit') {
             $id = $this->input->post('id');
             $query = $this->db->query("SELECT foto FROM tb_laporan WHERE id = " . $id . " ")->row_array();
 
             if ($query['foto']) {
-                if (file_exists(FCPATH . 'assets/files/kriminalitas/' . $query['foto'])) {
-                    unlink(FCPATH . 'assets/files/kriminalitas/' . $query['foto']);
+                if (file_exists(FCPATH . 'assets/files/faskes/' . $query['foto'])) {
+                    unlink(FCPATH . 'assets/files/faskes/' . $query['foto']);
                 }
             }
         }
@@ -336,7 +336,7 @@ class Kriminalitas extends CI_Controller
         $query = $this->db->query("SELECT * FROM tb_laporan WHERE id = " . $id . " ")->row_array();
 
         $filename = explode(".", $query['foto'])[0];
-        array_map('unlink', glob(FCPATH . "assets/files/kriminalitas/$filename.*"));
+        array_map('unlink', glob(FCPATH . "assets/files/faskes/$filename.*"));
     }
 
     private function delete_multiple_image($id)
@@ -347,7 +347,7 @@ class Kriminalitas extends CI_Controller
         foreach ($query as $key) {
             if ($key['foto']) {
                 $filename = explode(".", $key['foto'])[0];
-                array_map('unlink', glob(FCPATH . "assets/files/kriminalitas/$filename.*"));
+                array_map('unlink', glob(FCPATH . "assets/files/faskes/$filename.*"));
             }
         }
         return $return;
@@ -362,7 +362,7 @@ class Kriminalitas extends CI_Controller
             array(
                 'No',
                 'Kecamatan',
-                'Kriminalitas',
+                'faskes',
                 'Alamat',
                 'Keterangan',
                 'Longitude',
@@ -379,7 +379,7 @@ class Kriminalitas extends CI_Controller
             $buff = array(
                 $i,
                 $key['nama_kecamatan'],
-                $key['nama_kriminalitas'],
+                $key['nama_faskes'],
                 $key['alamat'],
                 $key['keterangan'],
                 $key['longitude'],
@@ -395,7 +395,7 @@ class Kriminalitas extends CI_Controller
         $doc->setActiveSheetIndex(0);
         $doc->getActiveSheet()->getStyle('A1:J1')->getFont()->setBold(true);
         $doc->getActiveSheet()->fromArray($dataArray);
-        $filename = 'data-kriminalitas.xls';
+        $filename = 'data-faskes.xls';
 
         header('Content-Type: application/vnd.ms-excel');
         header('Content-Disposition: attachment;filename="' . $filename . '"');
