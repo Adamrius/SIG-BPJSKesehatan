@@ -1,6 +1,6 @@
 <div class="d-md-flex justify-content-between flex-wrap grid-margin mb-xl-2 mb-lg-2">
     <div>
-        <a href="<?php echo base_url(); ?>backoffice/kriminalitas/kriminalitas/add" class="btn btn-primary btn-icon-text ">
+        <a href="<?php echo base_url(); ?>backoffice/faskes/faskes/add" class="btn btn-primary btn-icon-text ">
             <i class="btn-icon-prepend" data-feather="plus-circle"></i>Tambah
         </a>
         <a href="javascript:void(0)" id="reload-table" class="btn btn-light btn-icon-text">
@@ -12,7 +12,7 @@
     </div>
     <div>
         <form id="form-filter" class="d-flex align-items-center flex-wrap text-nowrap">
-            <a type="submit" href="<?php echo base_url(); ?>backoffice/kriminalitas/kriminalitas/export_excel" name="export" id="export_excel" class="btn btn-primary btn-icon-text mr-md-0 mr-2">
+            <a type="submit" href="<?php echo base_url(); ?>backoffice/faskes/faskes/export_excel" name="export" id="export_excel" class="btn btn-primary btn-icon-text mr-md-0 mr-2">
                 <i class="btn-icon-prepend" data-feather="file-text"></i> Export
             </a>
         </form>
@@ -33,7 +33,7 @@
                                 <th class="text-center py-0"><label class="checkbox-custome"><input type="checkbox" name="check-all-record"></label></th>
                                 <th class="text-center">No</th>
                                 <th class="text-center">Kecamatan</th>
-                                <th class="text-center">Kejahatan</th>
+                                <th class="text-center">Kesehatan</th>
                                 <th class="text-center">Alamat</th>
                                 <th class="text-center">Tanggal</th>
                                 <th class="text-center" width="15%"></th>
@@ -62,8 +62,8 @@
                             <p class="text-muted" id="d_kecamatan"></p>
                         </div>
                         <div class="mb-3">
-                            <label class="tx-11 font-weight-bold mb-0 text-uppercase">Kejahatan :</label>
-                            <p class="text-muted" id="d_kriminalitas"></p>
+                            <label class="tx-11 font-weight-bold mb-0 text-uppercase">Kesehatan :</label>
+                            <p class="text-muted" id="d_faskes"></p>
                         </div>
                         <div class="mb-3">
                             <label class="tx-11 font-weight-bold mb-0 text-uppercase">Alamat :</label>
@@ -117,7 +117,7 @@
         var table = $('#table-data').DataTable({
             ajax: {
                 type: 'POST',
-                url: "<?php echo base_url(); ?>backoffice/kriminalitas/kriminalitas/datatables",
+                url: "<?php echo base_url(); ?>backoffice/faskes/faskes/datatables",
                 complete: function(data, type) {
                     json = data.responseJSON;
                 },
@@ -171,7 +171,7 @@
             // table.ajax.url(url_reload).load();
 
             // export excel
-            url_export = '<?php echo base_url(); ?>backoffice/kriminalitas/kriminalitas/export_excel/?' + filter;
+            url_export = '<?php echo base_url(); ?>backoffice/faskes/faskes/export_excel/?' + filter;
             $('#export_excel').attr('href', url_export);
         });
 
@@ -183,14 +183,14 @@
 
             $.ajax({
                 type: "GET",
-                url: "<?php echo base_url(); ?>backoffice/kriminalitas/kriminalitas/get_detail_data",
+                url: "<?php echo base_url(); ?>backoffice/faskes/faskes/get_detail_data",
                 dataType: "json",
                 data: {
                     id: id
                 },
                 success: function(response) {
                     $('#d_kecamatan').html(response.kecamatan);
-                    $('#d_kriminalitas').html(response.kriminalitas);
+                    $('#d_faskes').html(response.faskes);
                     $('#d_alamat').html(response.alamat);
                     $('#d_keterangan').html(response.keterangan);
                     $('#d_tanggal').html(response.tanggal);
@@ -258,7 +258,7 @@
 
             $.ajax({
                 type: "POST",
-                url: "<?php echo base_url(); ?>backoffice/kriminalitas/kriminalitas/delete_data",
+                url: "<?php echo base_url(); ?>backoffice/faskes/faskes/delete_data",
                 dataType: "JSON",
                 data: {
                     id: id,
