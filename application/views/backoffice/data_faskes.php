@@ -24,9 +24,9 @@
                         <thead>
                             <tr>
                                 <th class="text-center py-0"><label class="checkbox-custome"><input type="checkbox" name="check-all-record"></label></th>
-                                <th class="text-center">No</th>
-                                <th class="text-center">Kesehatan</th>
-                                <th class="text-center">Color</th>
+                                <th class="text-center">Nomor</th>
+                                <th class="text-center">Kategori Fasilitas</th>
+                                <th class="text-center">Warna</th>
                                 <th class="text-center" width="15%"></th>
                             </tr>
                         </thead>
@@ -50,12 +50,12 @@
 
                 <form method="post" id="form-tambah-data" enctype="multipart/form-data" class="cmxform">
                     <div class="form-group">
-                        <label>Nama Kesehatan</label>
+                        <label>Kategori Fasilitas Kesehatan</label>
                         <input type="text" name="faskes" id="faskes" placeholder="" class="form-control">
                     </div>
 
                     <div class="form-group">
-                        <label>Warna</label>
+                        <label>Kode Warna</label>
                         <input type="text" name="color" id="color" placeholder="" class="form-control">
                     </div>
 
@@ -84,7 +84,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="mb-3">
-                            <label class="tx-11 font-weight-bold mb-0 text-uppercase">Nama Kesehatan :</label>
+                            <label class="tx-11 font-weight-bold mb-0 text-uppercase">Kategori Fasilitas Kesehatan :</label>
                             <p class="text-muted" id="d_faskes"></p>
                         </div>
 
@@ -123,6 +123,7 @@
             processing: true,
             serverSide: true,
             pagingType: 'full_numbers',
+            dom: 'Bfrtip',
             columnDefs: [{
                     className: 'text-center',
                     targets: [0, 1, -1],

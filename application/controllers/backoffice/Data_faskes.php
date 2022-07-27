@@ -12,11 +12,11 @@ class Data_faskes extends CI_Controller
 
     public function Index()
     {
-        $this->breadcrumbs->push('Faskes', 'backoffice/data_faskes');
-        $this->breadcrumbs->push('Data Faskes', '#');
+        $this->breadcrumbs->push('Fasilitas Kesehatan', 'backoffice/data_faskes');
+        $this->breadcrumbs->push('Data Fasilitas Kesehatan', '#');
 
         $data['breadcrumbs'] = $this->breadcrumbs->show();
-        $data['title']       = 'Data Faskes';
+        $data['title']       = 'Seluruh Fasilitas Kesehatan';
         $data['description'] = '';
         $data['keywords']    = '';
         $data['page']        = 'backoffice/data_faskes';
@@ -25,8 +25,8 @@ class Data_faskes extends CI_Controller
 
     function _sql()
     {
-        $this->db->select('kr.*');
-        $this->db->from('tb_faskes kr');
+        $this->db->select('fk.*');
+        $this->db->from('tb_faskes fk');
 
         return $this->db->get();
     }
@@ -118,7 +118,7 @@ class Data_faskes extends CI_Controller
     {
         $id = $this->input->get('id');
 
-        $query = $this->db->query("SELECT kr.* FROM tb_faskes kr WHERE kr.id = " . $id . " ")->row_array();
+        $query = $this->db->query("SELECT fk.* FROM tb_faskes fk WHERE fk.id = " . $id . " ")->row_array();
 
         $response['id']           = $query['id'];
         $response['faskes'] = $query['name'];
