@@ -25,7 +25,7 @@
                             <tr>
                                 <th class="text-center py-0"><label class="checkbox-custome"><input type="checkbox" name="check-all-record"></label></th>
                                 <th class="text-center">No</th>
-                                <th class="text-center">Kejahatan</th>
+                                <th class="text-center">Kesehatan</th>
                                 <th class="text-center">Color</th>
                                 <th class="text-center" width="15%"></th>
                             </tr>
@@ -50,8 +50,8 @@
 
                 <form method="post" id="form-tambah-data" enctype="multipart/form-data" class="cmxform">
                     <div class="form-group">
-                        <label>Nama Kejahatan</label>
-                        <input type="text" name="kriminalitas" id="kriminalitas" placeholder="" class="form-control">
+                        <label>Nama Kesehatan</label>
+                        <input type="text" name="faskes" id="faskes" placeholder="" class="form-control">
                     </div>
 
                     <div class="form-group">
@@ -84,8 +84,8 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="mb-3">
-                            <label class="tx-11 font-weight-bold mb-0 text-uppercase">Nama Kejahatan :</label>
-                            <p class="text-muted" id="d_kriminalitas"></p>
+                            <label class="tx-11 font-weight-bold mb-0 text-uppercase">Nama Kesehatan :</label>
+                            <p class="text-muted" id="d_faskes"></p>
                         </div>
 
                         <div class="mb-3">
@@ -111,7 +111,7 @@
         var table = $('#table-data').DataTable({
             ajax: {
                 type: 'POST',
-                url: "<?php echo base_url(); ?>backoffice/data_kriminalitas/datatables",
+                url: "<?php echo base_url(); ?>backoffice/data_faskes/datatables",
                 complete: function(data, type) {
                     json = data.responseJSON;
                 },
@@ -153,7 +153,7 @@
         $.validator.addMethod("cek_heading", function(value, element) {
             $.ajax({
                 method: "post",
-                url: '<?php echo base_url(); ?>backoffice/data_kriminalitas/cek_heading',
+                url: '<?php echo base_url(); ?>backoffice/data_faskes/cek_heading',
                 data: {
                     value: value
                 },
@@ -173,7 +173,7 @@
 
         var validate_form = $("#form-tambah-data").validate({
             rules: {
-                kriminalitas: {
+                faskes: {
                     required: true,
                     cek_heading: {
                         depends: function(element) {
@@ -190,9 +190,9 @@
                 },
             },
             messages: {
-                kriminalitas: {
-                    required: "Nama kejahatan harus diisi.",
-                    cek_heading: "Nama kejahatan sudah digunakan"
+                faskes: {
+                    required: "Nama kesehatan harus diisi.",
+                    cek_heading: "Nama kesehatan sudah digunakan"
                 },
                 color: {
                     required: "Warna harus diisi.",
@@ -234,7 +234,7 @@
 
             $.ajax({
                 type: "GET",
-                url: "<?php echo base_url(); ?>backoffice/data_kriminalitas/get_data",
+                url: "<?php echo base_url(); ?>backoffice/data_faskes/get_data",
                 dataType: "json",
                 data: {
                     id: id
@@ -243,7 +243,7 @@
                     $('#modal-data').modal('show');
 
                     $('#id').val(data.id);
-                    $('#kriminalitas').val(data.kriminalitas);
+                    $('#faskes').val(data.faskes);
                     $('#color').val(data.color);
                 }
             });
@@ -257,9 +257,9 @@
                 $('#submit-form').buttonLoader('start');
 
                 if (save_method == 'add') {
-                    url = "<?php echo base_url(); ?>backoffice/data_kriminalitas/add_data";
+                    url = "<?php echo base_url(); ?>backoffice/data_faskes/add_data";
                 } else {
-                    url = "<?php echo base_url(); ?>backoffice/data_kriminalitas/edit_data";
+                    url = "<?php echo base_url(); ?>backoffice/data_faskes/edit_data";
                 }
 
                 $.ajax({
@@ -313,13 +313,13 @@
 
             $.ajax({
                 type: "GET",
-                url: "<?php echo base_url(); ?>backoffice/data_kriminalitas/get_data",
+                url: "<?php echo base_url(); ?>backoffice/data_faskes/get_data",
                 dataType: "json",
                 data: {
                     id: id
                 },
                 success: function(response) {
-                    $('#d_kriminalitas').text(response.kriminalitas);
+                    $('#d_faskes').text(response.faskes);
                     $('#d_color').html('<div style="position: relative; width: 80px; height: 30px; background: ' + response.color + '; border-radius: 0.313rem;"></div>');
                 }
             });
@@ -346,7 +346,7 @@
 
             $.ajax({
                 type: "POST",
-                url: "<?php echo base_url(); ?>backoffice/data_kriminalitas/delete_data",
+                url: "<?php echo base_url(); ?>backoffice/data_faskes/delete_data",
                 dataType: "JSON",
                 data: {
                     id: id,
