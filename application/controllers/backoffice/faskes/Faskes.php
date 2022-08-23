@@ -362,7 +362,7 @@ class Faskes extends CI_Controller
             array(
                 'No',
                 'Kecamatan',
-                'faskes',
+                'Fasilitas Kesehatan',
                 'Alamat',
                 'Keterangan',
                 'Longitude',
