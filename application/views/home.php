@@ -65,7 +65,9 @@
                             '<div class="wrap-info">' +
                             '<h5>' + val2.faskes + '</h5>' +
                             '<ul>' +
-                            '<li><span>' + val2.alamat + '</span></li>' +
+                            '<li><i class="icon fa fa-hospital-alt"></i><span>' + val2.nama + '</span></li>' +
+                            '<li><i class="icon fa fa-phone-alt"></i><span>' + val2.no_telp + '</span></li>' +
+                            '<li><i class="icon fa fa-map-marker-alt"></i><span>' + val2.alamat + '</span></li>' +
                             '<li><span class="fw-500">' + val2.kecamatan + '</span></li>' +
                             '</ul>' +
                             '</div>' +

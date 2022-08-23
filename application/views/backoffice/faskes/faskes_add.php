@@ -30,8 +30,23 @@
                             </div>
 
                             <div class="form-group">
+                                <label class="form-label">Kode</label>
+                                <textarea name="kode" id="kode" class="form-control" rows="3"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Nama</label>
+                                <textarea name="nama" id="nama" class="form-control" rows="3"></textarea>
+                            </div>
+
+                            <div class="form-group">
                                 <label class="form-label">Alamat</label>
                                 <textarea name="alamat" id="alamat" class="form-control" rows="3"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">No Telp</label>
+                                <textarea name="no_telp" id="no_telp" class="form-control" rows="3"></textarea>
                             </div>
 
                             <div class="form-group">
@@ -106,7 +121,16 @@
                 faskes: {
                     required: true,
                 },
+                kode: {
+                    required: true
+                },
+                nama: {
+                    required: true
+                },
                 alamat: {
+                    required: true
+                },
+                no_telp: {
                     required: true
                 },
                 image: {
@@ -127,8 +151,17 @@
                 faskes: {
                     required: "Pilih Kategori",
                 },
+                kode: {
+                    required: "Kode harus diisi"
+                },
+                nama: {
+                    required: "Nama harus diisi"
+                },
                 alamat: {
                     required: "Alamat harus diisi"
+                },
+                no_telp: {
+                    required: "No Telp harus diisi"
                 },
                 image: {
                     extension: "Unggah foto dengan format .PNG/.JPG/.JPEG",
@@ -176,7 +209,10 @@
 
                     $("#kecamatan").select2().val(response.id_kecamatan).trigger('change.select2');
                     $("#faskes").select2().val(response.id_faskes).trigger('change.select2');
+                    $("textarea#kode").val(response.kode);
+                    $("textarea#nama").val(response.nama);
                     $("textarea#alamat").val(response.alamat);
+                    $("textarea#no_telp").val(response.no_telp);
                     $("textarea#keterangan").val(response.keterangan);
                     $('#longitude').val(response.longitude);
                     $('#latitude').val(response.latitude);

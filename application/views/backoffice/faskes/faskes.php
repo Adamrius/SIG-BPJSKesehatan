@@ -36,6 +36,7 @@
                                 <th class="text-center">Kategori</th>
                                 <th class="text-center">Alamat</th>
                                 <th class="text-center">Tanggal</th>
+
                                 <th class="text-center" width="15%"></th>
                             </tr>
                         </thead>
@@ -66,8 +67,16 @@
                             <p class="text-muted" id="d_faskes"></p>
                         </div>
                         <div class="mb-3">
+                            <label class="tx-11 font-weight-bold mb-0 text-uppercase">Nama :</label>
+                            <p class="text-muted" id="d_nama"></p>
+                        </div>
+                        <div class="mb-3">
                             <label class="tx-11 font-weight-bold mb-0 text-uppercase">Alamat :</label>
                             <p class="text-muted" id="d_alamat"></p>
+                        </div>
+                        <div class="mb-3">
+                            <label class="tx-11 font-weight-bold mb-0 text-uppercase">No Telp :</label>
+                            <p class="text-muted" id="d_no_telp"></p>
                         </div>
                         <div class="mb-3">
                             <label class="tx-11 font-weight-bold mb-0 text-uppercase">longitude :</label>
@@ -191,7 +200,9 @@
                 success: function(response) {
                     $('#d_kecamatan').html(response.kecamatan);
                     $('#d_faskes').html(response.faskes);
+                    $('#d_nama').html(response.nama);
                     $('#d_alamat').html(response.alamat);
+                    $('#d_no_telp').html(response.no_telp);
                     $('#d_keterangan').html(response.keterangan);
                     $('#d_tanggal').html(response.tanggal);
                     $('#d_longitude').html(response.longitude);

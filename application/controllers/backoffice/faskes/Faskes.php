@@ -120,11 +120,32 @@ class Faskes extends CI_Controller
         ";
         $query = $this->db->query($sql)->row_array();
 
+        // kode
+        if ($query['kode']) {
+            $kode = $query['kode'];
+        } else {
+            $kode = '-';
+        }
+
+        // nama
+        if ($query['nama']) {
+            $nama = $query['nama'];
+        } else {
+            $nama = '-';
+        }
+
         // alamat
         if ($query['alamat']) {
             $alamat = $query['alamat'];
         } else {
             $alamat = '-';
+        }
+
+        // no_telp
+        if ($query['no_telp']) {
+            $no_telp = $query['no_telp'];
+        } else {
+            $no_telp = '-';
         }
 
         // longitude
@@ -163,9 +184,12 @@ class Faskes extends CI_Controller
         }
 
         $response['kecamatan']        = $query['nama_kecamatan'];
-        $response['faskes']     = $query['nama_faskes'];
+        $response['faskes']           = $query['nama_faskes'];
         $response['color']            = $query['color'];
+        $response['kode']             = $kode;
+        $response['nama']             = $nama;
         $response['alamat']           = $alamat;
+        $response['no_telp']          = $no_telp;
         $response['keterangan']       = $keterangan;
         $response['tanggal']          = $tanggal;
         $response['longitude']        = $longitude;
@@ -222,8 +246,11 @@ class Faskes extends CI_Controller
         }
 
         $data['id_kecamatan']    = $this->input->post('kecamatan');
-        $data['id_faskes'] = $this->input->post('faskes');
+        $data['id_faskes']       = $this->input->post('faskes');
+        $data['kode']            = $this->input->post('kode');
+        $data['nama']            = $this->input->post('nama');
         $data['alamat']          = $this->input->post('alamat');
+        $data['no_telp']         = $this->input->post('no_telp');
         $data['keterangan']      = $this->input->post('keterangan');
         $data['longitude']       = $this->input->post('longitude');
         $data['latitude']        = $this->input->post('latitude');
@@ -251,8 +278,11 @@ class Faskes extends CI_Controller
         }
 
         $data['id_kecamatan']    = $this->input->post('kecamatan');
-        $data['id_faskes'] = $this->input->post('faskes');
+        $data['id_faskes']       = $this->input->post('faskes');
+        $data['kode']            = $this->input->post('kode');
+        $data['nama']            = $this->input->post('nama');
         $data['alamat']          = $this->input->post('alamat');
+        $data['no_telp']         = $this->input->post('no_telp');
         $data['keterangan']      = $this->input->post('keterangan');
         $data['longitude']       = $this->input->post('longitude');
         $data['latitude']        = $this->input->post('latitude');
@@ -363,7 +393,10 @@ class Faskes extends CI_Controller
                 'No',
                 'Kecamatan',
                 'Fasilitas Kesehatan',
+                'Kode',
+                'Nama',
                 'Alamat',
+                'No Telp',
                 'Keterangan',
                 'Longitude',
                 'Latitude',
@@ -380,7 +413,10 @@ class Faskes extends CI_Controller
                 $i,
                 $key['nama_kecamatan'],
                 $key['nama_faskes'],
+                $key['kode'],
+                $key['nama'],
                 $key['alamat'],
+                $key['no_telp'],
                 $key['keterangan'],
                 $key['longitude'],
                 $key['latitude'],
@@ -395,7 +431,7 @@ class Faskes extends CI_Controller
         $doc->setActiveSheetIndex(0);
         $doc->getActiveSheet()->getStyle('A1:J1')->getFont()->setBold(true);
         $doc->getActiveSheet()->fromArray($dataArray);
-        $filename = 'data-faskes.xls';
+        $filename = 'Data Fasilitas Kesehatan.xls';
 
         header('Content-Type: application/vnd.ms-excel');
         header('Content-Disposition: attachment;filename="' . $filename . '"');
