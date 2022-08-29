@@ -60,7 +60,7 @@ class Post extends CI_Controller
             $data2['kecamatan']     = $key2['nama_kecamatan'];
             $data2['longitude']     = $key2['longitude'];
             $data2['latitude']      = $key2['latitude'];
-            $data2['kode']          = $key2['kode'];
+            $data2['kode_faskes']   = $key2['kode_faskes'];
             $data2['nama']          = $key2['nama'];
             $data2['alamat']        = $key2['alamat'];
             $data2['no_telp']       = $key2['no_telp'];

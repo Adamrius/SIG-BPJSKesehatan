@@ -120,11 +120,11 @@ class Faskes extends CI_Controller
         ";
         $query = $this->db->query($sql)->row_array();
 
-        // kode
-        if ($query['kode']) {
-            $kode = $query['kode'];
+        // kode_faskes
+        if ($query['kode_faskes']) {
+            $kode_faskes = $query['kode_faskes'];
         } else {
-            $kode = '-';
+            $kode_faskes = '-';
         }
 
         // nama
@@ -186,7 +186,7 @@ class Faskes extends CI_Controller
         $response['kecamatan']        = $query['nama_kecamatan'];
         $response['faskes']           = $query['nama_faskes'];
         $response['color']            = $query['color'];
-        $response['kode']             = $kode;
+        $response['kode_faskes']      = $kode_faskes;
         $response['nama']             = $nama;
         $response['alamat']           = $alamat;
         $response['no_telp']          = $no_telp;
@@ -247,7 +247,7 @@ class Faskes extends CI_Controller
 
         $data['id_kecamatan']    = $this->input->post('kecamatan');
         $data['id_faskes']       = $this->input->post('faskes');
-        $data['kode']            = $this->input->post('kode');
+        $data['kode_faskes']     = $this->input->post('kode_faskes');
         $data['nama']            = $this->input->post('nama');
         $data['alamat']          = $this->input->post('alamat');
         $data['no_telp']         = $this->input->post('no_telp');
@@ -279,7 +279,7 @@ class Faskes extends CI_Controller
 
         $data['id_kecamatan']    = $this->input->post('kecamatan');
         $data['id_faskes']       = $this->input->post('faskes');
-        $data['kode']            = $this->input->post('kode');
+        $data['kode_faskes']     = $this->input->post('kode_faskes');
         $data['nama']            = $this->input->post('nama');
         $data['alamat']          = $this->input->post('alamat');
         $data['no_telp']         = $this->input->post('no_telp');
@@ -393,7 +393,7 @@ class Faskes extends CI_Controller
                 'No',
                 'Kecamatan',
                 'Fasilitas Kesehatan',
-                'Kode',
+                'Kode Faskes',
                 'Nama',
                 'Alamat',
                 'No Telp',
@@ -413,7 +413,7 @@ class Faskes extends CI_Controller
                 $i,
                 $key['nama_kecamatan'],
                 $key['nama_faskes'],
-                $key['kode'],
+                $key['kode_faskes'],
                 $key['nama'],
                 $key['alamat'],
                 $key['no_telp'],
