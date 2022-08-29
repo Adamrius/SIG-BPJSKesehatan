@@ -67,6 +67,10 @@
                             <p class="text-muted" id="d_faskes"></p>
                         </div>
                         <div class="mb-3">
+                            <label class="tx-11 font-weight-bold mb-0 text-uppercase">Kode Faskes :</label>
+                            <p class="text-muted" id="d_kode_faskes"></p>
+                        </div>
+                        <div class="mb-3">
                             <label class="tx-11 font-weight-bold mb-0 text-uppercase">Nama :</label>
                             <p class="text-muted" id="d_nama"></p>
                         </div>
@@ -200,6 +204,7 @@
                 success: function(response) {
                     $('#d_kecamatan').html(response.kecamatan);
                     $('#d_faskes').html(response.faskes);
+                    $('#d_kode_faskes').html(response.kode_faskes);
                     $('#d_nama').html(response.nama);
                     $('#d_alamat').html(response.alamat);
                     $('#d_no_telp').html(response.no_telp);

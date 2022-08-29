@@ -30,8 +30,8 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="form-label">Kode</label>
-                                <textarea name="kode" id="kode" class="form-control" rows="3"></textarea>
+                                <label class="form-label">Kode Faskes</label>
+                                <textarea name="kode_faskes" id="kode_faskes" class="form-control" rows="3"></textarea>
                             </div>
 
                             <div class="form-group">
@@ -121,7 +121,7 @@
                 faskes: {
                     required: true,
                 },
-                kode: {
+                kode_faskes: {
                     required: true
                 },
                 nama: {
@@ -151,8 +151,8 @@
                 faskes: {
                     required: "Pilih Kategori",
                 },
-                kode: {
-                    required: "Kode harus diisi"
+                kode_faskes: {
+                    required: "Kode Faskes harus diisi"
                 },
                 nama: {
                     required: "Nama harus diisi"
@@ -209,7 +209,7 @@
 
                     $("#kecamatan").select2().val(response.id_kecamatan).trigger('change.select2');
                     $("#faskes").select2().val(response.id_faskes).trigger('change.select2');
-                    $("textarea#kode").val(response.kode);
+                    $("textarea#kode_faskes").val(response.kode_faskes);
                     $("textarea#nama").val(response.nama);
                     $("textarea#alamat").val(response.alamat);
                     $("textarea#no_telp").val(response.no_telp);
