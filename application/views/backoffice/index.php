@@ -106,7 +106,7 @@
 </head>
 
 
-<body class="sidebar-light">
+<body class="sidebar-dark">
 
     <?php $id_admin = $this->session->userdata('id_admin'); ?>
     <?php $get_admin = $this->db->query("SELECT * FROM admin_user WHERE id_user= " . $id_admin . " ")->row_array(); ?>
