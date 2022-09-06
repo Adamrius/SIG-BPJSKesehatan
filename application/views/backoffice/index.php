@@ -8,6 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="">
 
+    <link rel="apple-touch-icon" href="<?php echo base_url(); ?>assets/files/logo/<?php echo $web['favicon']; ?>">
+
+    <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/files/logo/<?php echo $web['favicon']; ?>">
     <title><?php echo $web['meta_description']; ?> | <?php echo $web['name']; ?></title>
     <meta name="description" content="<?php echo $web['meta_description']; ?>">
     <meta name="keywords" content="<?php echo $web['meta_keywords']; ?>">
