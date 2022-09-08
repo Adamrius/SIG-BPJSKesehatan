@@ -203,7 +203,7 @@
 
         <div class="page-wrapper">
             <!-- navbar -->
-            <nav class="navbar">
+            <nav class="navbar bg-primary">
                 <a href="#" class="sidebar-toggler">
                     <i data-feather="menu"></i>
                 </a>
@@ -255,19 +255,19 @@
             </nav>
             <!-- end navbar -->
 
-            <div class="page-content">
-                <nav class="page-breadcrumb">
+            <div class="page-content bg-success ">
+                <!-- <nav class="page-breadcrumb ">
                     <?php if ($breadcrumbs) {
                         echo $breadcrumbs;
                     } ?>
-                </nav>
+                </nav> -->
 
                 <?php $this->load->view($page); ?>
             </div>
 
             <!-- footer -->
-            <footer class="footer d-flex flex-column flex-md-row align-items-center justify-content-between">
-                <p class="text-muted text-center text-md-left">Copyright © <script>
+            <footer class="footer d-flex flex-column flex-md-row align-items-center justify-content-between bg-primary">
+                <p class="text-light text-center text-md-left">Copyright © <script>
                         document.write(new Date().getFullYear())
                     </script> SIG Fasilitas Kesehatan BPJS </a>. All rights reserved</p>
             </footer>
