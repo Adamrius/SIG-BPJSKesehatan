@@ -13,8 +13,8 @@ class Data_administrator extends CI_Controller
 
     public function Index()
     {
-        $this->breadcrumbs->push('Administrator', 'backoffice/administrator/administrator');
-        $this->breadcrumbs->push('Data Administrator', '#');
+        $this->breadcrumbs->push('Pengaturan', 'backoffice/administrator/administrator');
+        $this->breadcrumbs->push('Pengaturan', '#');
 
         $data['breadcrumbs'] = $this->breadcrumbs->show();
         $data['title']       = 'Data Administrator';
@@ -34,8 +34,8 @@ class Data_administrator extends CI_Controller
             id_user,
             photo,
             nama_lengkap,
-            username,
             email,
+            no_telp,
             terakhir_login,
             '' as action 
             FROM admin_user 

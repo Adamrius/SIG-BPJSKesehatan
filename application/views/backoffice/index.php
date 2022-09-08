@@ -96,6 +96,18 @@
             left: 15em;
             z-index: 10;
         }
+
+        /* Chrome, Safari, Edge, Opera */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
     </style>
 
     <script type="text/javascript">
@@ -131,65 +143,56 @@
                     <li class="nav-item nav-category">Main</li>
                     <li class="nav-item">
                         <a href="<?php echo base_url(); ?>backoffice/dashboard" class="nav-link">
-                            <i class="link-icon" data-feather="box"></i>
+                            <i class="link-icon" data-feather="command"></i>
                             <span class="link-title">Dashboard</span>
                         </a>
                     </li>
 
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#collapse-data-kesehatan" role="button" aria-expanded="false" aria-controls="icons">
-                            <i class="link-icon" data-feather="monitor"></i>
+                            <i class="link-icon" data-feather="hard-drive"></i>
                             <span class="link-title">Fasilitas Kesehatan</span>
-                            <i class="link-arrow" data-feather="chevron-down"></i>
+                            <i class="link-arrow" data-feather="chevrons-down"></i>
                         </a>
                         <div class="collapse" id="collapse-data-kesehatan">
                             <ul class="nav sub-menu">
+
                                 <li class="nav-item">
-                                    <a href="<?php echo base_url(); ?>backoffice/faskes/faskes" class="nav-link">Data Fasilitas Kesehatan</a>
+                                    <a href="<?php echo base_url(); ?>backoffice/faskes/faskes/add/" class="nav-link">Input Fasilitas Kesehatan</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="<?php echo base_url(); ?>backoffice/faskes/faskes/add" class="nav-link">Input Fasilitas Kesehatan</a>
+                                    <a href="<?php echo base_url(); ?>backoffice/faskes/faskes/" class="nav-link">Data Fasilitas Kesehatan</a>
                                 </li>
+
                             </ul>
                         </div>
                     </li>
 
                     <li class="nav-item">
                         <a href="<?php echo base_url(); ?>backoffice/kategori_faskes" class="nav-link">
-                            <i class="link-icon" data-feather="users"></i>
+                            <i class="link-icon" data-feather="key"></i>
                             <span class="link-title">Kategori Faskes</span>
                         </a>
                     </li>
 
                     <li class="nav-item">
                         <a href="<?php echo base_url(); ?>backoffice/data_kecamatan" class="nav-link">
-                            <i class="link-icon" data-feather="map"></i>
+                            <i class="link-icon" data-feather="database"></i>
                             <span class="link-title">Data Kecamatan</span>
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="#collapse-setting-website" role="button" aria-expanded="false" aria-controls="icons">
-                            <i class="link-icon" data-feather="settings"></i>
-                            <span class="link-title">Setting</span>
-                            <i class="link-arrow" data-feather="chevron-down"></i>
+                        <a href="<?php echo base_url(); ?>backoffice/administrator/web" class="nav-link">
+                            <i class="link-icon" data-feather="sliders"></i>
+                            <span class="link-title">Konfigurasi</span>
                         </a>
-                        <div class="collapse" id="collapse-setting-website">
-                            <ul class="nav sub-menu">
-                                <li class="nav-item">
-                                    <a href="<?php echo base_url(); ?>backoffice/administrator/web" class="nav-link">Setting Website</a>
-                                </li>
-                                <!-- <li class="nav-item">
-                                    <a href="<?php echo base_url(); ?>backoffice/administrator/konfigurasi_email" class="nav-link">Konfigurasi Email</a>
-                                </li> -->
-                            </ul>
-                        </div>
                     </li>
 
                     <li class="nav-item">
                         <a href="<?php echo base_url(); ?>backoffice/administrator/data_administrator" class="nav-link">
-                            <i class="link-icon" data-feather="user-plus"></i>
-                            <span class="link-title">Data Administrator</span>
+                            <i class="link-icon" data-feather="lock"></i>
+                            <span class="link-title">Pengaturan</span>
                         </a>
                     </li>
 
@@ -234,13 +237,13 @@
                                         <li class="nav-item">
                                             <a href="javascript:void(0)" class="nav-link btn-ubah-password">
                                                 <i data-feather="lock"></i>
-                                                <span>Rubah Password</span>
+                                                <span>Change Password</span>
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a href="<?php echo base_url(); ?>backoffice/login/logout" class="nav-link">
                                                 <i data-feather="log-out"></i>
-                                                <span>Log Out</span>
+                                                <span>Keluar</span>
                                             </a>
                                         </li>
                                     </ul>
@@ -305,7 +308,7 @@
                             <div class="col-md-6 pl-md-4">
                                 <div class="form-group">
                                     <label>No. Telephone</label>
-                                    <input type="text" name="no_telp" id="no_telp2" placeholder="" class="form-control">
+                                    <input type="number" name="no_telp" id="no_telp2" placeholder="" class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label>Unggah Foto</label>
@@ -348,7 +351,7 @@
 
                 <div class="modal-body">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
-                    <h4 class="modal-title">Ubah Password</h4>
+                    <h4 class="modal-title">Change Password</h4>
                     <br>
 
                     <form method="post" id="form-ubah-password" class="cmxform">

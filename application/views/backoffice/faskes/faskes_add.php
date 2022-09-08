@@ -122,7 +122,8 @@
                     required: true,
                 },
                 kode_faskes: {
-                    required: true
+                    required: true,
+                    maxlength: 9
                 },
                 nama: {
                     required: true
@@ -131,7 +132,8 @@
                     required: true
                 },
                 no_telp: {
-                    required: true
+                    required: true,
+                    number: true
                 },
                 image: {
                     extension: "jpg|jpeg|png",
@@ -152,7 +154,8 @@
                     required: "Pilih Kategori",
                 },
                 kode_faskes: {
-                    required: "Kode Faskes harus diisi"
+                    required: "Kode Faskes harus diisi",
+                    maxlength: "Telah melebihi 9 digit kode"
                 },
                 nama: {
                     required: "Nama harus diisi"
@@ -161,7 +164,8 @@
                     required: "Alamat harus diisi"
                 },
                 no_telp: {
-                    required: "No Telp harus diisi"
+                    required: "No Telp harus diisi",
+                    number: "Silahkan masukan no telp dengan benar"
                 },
                 image: {
                     extension: "Unggah foto dengan format .PNG/.JPG/.JPEG",

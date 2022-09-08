@@ -72,7 +72,8 @@ class Faskes extends CI_Controller
                 '<a href="javascript:void(0)" class="detail-data" data="' . $key['id'] . '">' . $key['nama_kecamatan'] . '</a>',
                 character_limiter($key['nama_faskes'], 40),
                 character_limiter($key['alamat'], 40),
-                $tanggal,
+                character_limiter($key['no_telp'], 15),
+
                 '<div class="dropdown">
                     <button class="btn p-0" type="button" id="dropdown-action" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-ellipsis-v font-20 icon-lg text-muted pb-3px"></i>
