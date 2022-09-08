@@ -15,7 +15,7 @@
 
                         <div class="col-md-8 pl-md-0 d-md-flex align-items-center h-100">
                             <div class="auth-form py-5">
-                                <h2 class="text-success fw-bold noble-ui-logo mb-2">Admin BPJS Kesehatan Kabupaten Banyumas</h2>
+                                <h2 class="text-success fw-bold noble-ui-logo mb-2">ADMIN BPJS Kesehatan Kabupaten Banyumas</h2>
                                 <h5 class="text-muted font-weight-normal mb-4">Masukan email dan password Anda.</h5>
 
                                 <div class="feedback-login"></div>

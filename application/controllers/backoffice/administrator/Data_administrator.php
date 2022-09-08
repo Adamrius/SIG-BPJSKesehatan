@@ -13,7 +13,7 @@ class Data_administrator extends CI_Controller
 
     public function Index()
     {
-        $this->breadcrumbs->push('Pengaturan', 'backoffice/administrator/administrator');
+        $this->breadcrumbs->push('Pengaturan', 'backoffice/administrator/data_administrator');
         $this->breadcrumbs->push('Pengaturan', '#');
 
         $data['breadcrumbs'] = $this->breadcrumbs->show();

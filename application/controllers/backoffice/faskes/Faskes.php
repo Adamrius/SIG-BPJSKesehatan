@@ -12,7 +12,7 @@ class Faskes extends CI_Controller
 
     public function Index()
     {
-        $this->breadcrumbs->push('Fasilitas Kesehatan', 'backoffice/faskes/faskes');
+        $this->breadcrumbs->push('Input Fasilitas Kesehatan', 'backoffice/faskes/faskes/add');
         $this->breadcrumbs->push('Data Fasilitas Kesehatan', '#');
 
         $data['breadcrumbs'] = $this->breadcrumbs->show();
@@ -203,7 +203,7 @@ class Faskes extends CI_Controller
 
     function add()
     {
-        $this->breadcrumbs->push('Fasilitas Kesehatan', 'backoffice/faskes/faskes');
+        $this->breadcrumbs->push('Data Fasilitas Kesehatan', 'backoffice/faskes/faskes');
         $this->breadcrumbs->push('Input Fasilitas Kesehatan', '#');
 
         $data['param']       = 'add';

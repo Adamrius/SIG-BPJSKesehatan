@@ -231,19 +231,19 @@
                                         <li class="nav-item">
                                             <a href="javascript:void(0)" class="nav-link btn-edit-profile">
                                                 <i data-feather="user"></i>
-                                                <span>Edit Profile</span>
+                                                <span>Profile</span>
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a href="javascript:void(0)" class="nav-link btn-ubah-password">
                                                 <i data-feather="lock"></i>
-                                                <span>Change Password</span>
+                                                <span>Password</span>
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a href="<?php echo base_url(); ?>backoffice/login/logout" class="nav-link">
                                                 <i data-feather="log-out"></i>
-                                                <span>Keluar</span>
+                                                <span>Logout</span>
                                             </a>
                                         </li>
                                     </ul>
