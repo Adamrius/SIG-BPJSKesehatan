@@ -12,7 +12,7 @@ class Data_kecamatan extends CI_Controller
 
     public function Index()
     {
-        $this->breadcrumbs->push('Kecamatan', 'backoffice/data_kecamatan');
+        $this->breadcrumbs->push('Data Kecamatan', 'backoffice/data_kecamatan');
         $this->breadcrumbs->push('Data Kecamatan', '#');
 
         $data['breadcrumbs'] = $this->breadcrumbs->show();

@@ -1,25 +1,26 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
+<?php defined('BASEPATH') or exit('No direct script access allowed');
 
-class Web extends CI_Controller {
+class Web extends CI_Controller
+{
 
-	function __construct()
+    function __construct()
     {
         parent::__construct();
         $this->main_model->logged_in_admin();
     }
-    
-	public function index()
-	{
-        $this->breadcrumbs->push('Website', 'backoffice/administrator/web');
-        $this->breadcrumbs->push('Setting Website', '#');
+
+    public function index()
+    {
+        $this->breadcrumbs->push('Konfigurasi', 'backoffice/administrator/web');
+        $this->breadcrumbs->push('Konfigurasi', '#');
 
         $data['breadcrumbs'] = $this->breadcrumbs->show();
-		$data['title']       = 'Setting Website';
-		$data['description'] = '';
-		$data['keywords']    = '';
-		$data['page']        = 'backoffice/administrator/web';
-		$this->load->view('backoffice/index', $data);
-	}
+        $data['title']       = 'Setting Website';
+        $data['description'] = '';
+        $data['keywords']    = '';
+        $data['page']        = 'backoffice/administrator/web';
+        $this->load->view('backoffice/index', $data);
+    }
 
     public function get_data()
     {
@@ -48,7 +49,7 @@ class Web extends CI_Controller {
 
         $query = $this->main_model->update_data('admin_web', $data, 'id', $id);
 
-        if($query) {
+        if ($query) {
             $response = 1;
         }
         echo json_encode($response);
@@ -58,16 +59,16 @@ class Web extends CI_Controller {
     {
         $config['upload_path']   = './assets/files/logo/';
         $config['allowed_types'] = 'jpg|jpeg|png';
-        $config['file_name']     = $name.'-'.substr(str_shuffle('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'), 0, 10);
+        $config['file_name']     = $name . '-' . substr(str_shuffle('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'), 0, 10);
 
         $query = $this->db->query("SELECT favicon FROM admin_web WHERE id = 1 ")->row_array();
-        
-        if($query['favicon']) {
-            if (file_exists(FCPATH.'assets/files/logo/'.$query['favicon'])) {
-                unlink(FCPATH.'assets/files/logo/'.$query['favicon']);
+
+        if ($query['favicon']) {
+            if (file_exists(FCPATH . 'assets/files/logo/' . $query['favicon'])) {
+                unlink(FCPATH . 'assets/files/logo/' . $query['favicon']);
             }
         }
-        
+
         $this->upload->initialize($config);
 
         if ($this->upload->do_upload($name)) {
