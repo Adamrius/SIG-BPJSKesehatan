@@ -3,11 +3,11 @@
         <div class="row flex-grow" id="load_data_faskes">
             <div class="col-md-3 grid-margin stretch-card">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body bg-dark">
                         <div class="d-flex justify-content-between align-items-baseline mb-2">
-                            <h6 class="card-title mb-0">Kecamatan</h6>
+                            <h6 class="card-title mb-0 text-white">Kecamatan</h6>
                         </div>
-                        <h3 class="mb-0" id="load_data_kecamatan"></h3>
+                        <h3 class="mb-0 text-white" id="load_data_kecamatan"></h3>
                     </div>
                 </div>
             </div>
