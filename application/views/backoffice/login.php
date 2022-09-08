@@ -9,13 +9,13 @@
                     <div class="row">
                         <div class="col-md-4 pr-md-0 d-none d-md-block">
                             <div class="auth-thumbnails">
-                                <img class="auth-left-wrapper mx-auto img-fluid" src="<?php echo base_url(); ?>assets/backoffice/images/admin.jpeg">
+                                <img class="auth-left-wrapper mx-auto img-fluid" src="<?php echo base_url(); ?>assets/backoffice/images/photo.jpg">
                             </div>
                         </div>
 
                         <div class="col-md-8 pl-md-0 d-md-flex align-items-center h-100">
                             <div class="auth-form py-5">
-                                <h2 class="text-accent fw-bold noble-ui-logo mb-2">Login Admin</h2>
+                                <h2 class="text-success fw-bold noble-ui-logo mb-2">Admin BPJS Kesehatan Kabupaten Banyumas</h2>
                                 <h5 class="text-muted font-weight-normal mb-4">Masukan email dan password Anda.</h5>
 
                                 <div class="feedback-login"></div>
@@ -32,7 +32,7 @@
                                     </div>
 
                                     <div class="form-actions text-center mt-4">
-                                        <button type="submit" name="submit-form" class="btn btn-accent btn-block text-white">Masuk</button>
+                                        <button type="submit" name="submit-form" class="btn btn-primary btn-block text-white">Masuk</button>
                                     </div>
                                 </form>
                             </div>
