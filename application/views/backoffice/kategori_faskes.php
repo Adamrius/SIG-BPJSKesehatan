@@ -56,7 +56,7 @@
 
                     <div class="form-group">
                         <label>Kode Warna</label>
-                        <input type="text" name="color" id="color" placeholder="" class="form-control">
+                        <input type="color" name="color" id="color" placeholder="" class="form-control">
                     </div>
 
                     <div class="block-bottom d-flex justify-content-between">
@@ -321,7 +321,7 @@
                 },
                 success: function(response) {
                     $('#d_faskes').text(response.faskes);
-                    $('#d_color').html('<div style="position: relative; width: 80px; height: 30px; background: ' + response.color + '; border-radius: 0.313rem;"></div>');
+                    $('#d_color').html('<div style="position: relative; width: 180px; height: 35px; background: ' + response.color + '; border-radius: 0.313rem;"></div>');
                 }
             });
             return false;
