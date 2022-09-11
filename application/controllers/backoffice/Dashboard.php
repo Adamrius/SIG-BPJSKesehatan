@@ -33,9 +33,10 @@ class Dashboard extends CI_Controller
 
             $count = $this->db->query("SELECT COUNT(id) as total FROM tb_laporan WHERE id_faskes = " . $key['id'] . " ")->row_array();
 
-            $row['id']           = $key['id'];
-            $row['faskes'] = $key['name'];
-            $row['total']        = $count['total'];
+            $row['id']              = $key['id'];
+            $row['faskes']          = $key['name'];
+            $row['color']           = $key['color'];
+            $row['total']           = $count['total'];
 
             array_push($data, $row);
         }

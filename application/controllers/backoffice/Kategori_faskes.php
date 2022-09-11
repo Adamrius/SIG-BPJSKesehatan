@@ -54,7 +54,7 @@ class Kategori_faskes extends CI_Controller
                 '<label class="checkbox-custome"><input type="checkbox" name="check-record" value="' . $key['id'] . '" class="check-record"></label>',
                 $no,
                 '<a href="javascript:void(0);" data="' . $key['id'] . '" class="detail-data">' . character_limiter($key['name'], 20) . '</a>',
-                $key['color'],
+                '<div class="color-area" style="background: ' . $key['color'] . ';"><span>' . $key['color'] . '</span></div>',
                 '<div class="dropdown">
                     <button class="btn p-0" type="button" id="dropdown-action" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-ellipsis-v font-20 icon-lg text-muted pb-3px"></i>
