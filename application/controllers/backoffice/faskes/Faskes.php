@@ -332,7 +332,7 @@ class Faskes extends CI_Controller
         if ($method == 'single') {
             $id = $this->input->post('id');
 
-            $this->delete_single_image($id);
+            // $this->delete_single_image($id);
             $query = $this->db->query("DELETE FROM tb_laporan WHERE id = " . $id . " ");
 
             if ($query) {
