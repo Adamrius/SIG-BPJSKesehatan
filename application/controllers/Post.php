@@ -86,15 +86,15 @@ class Post extends CI_Controller
 
         $year  = date('Y');
 
-        $id_kriminalitas = $this->input->get('id');
+        $id_faskes = $this->input->get('id');
 
         $data = $this->db->query("
-            SELECT l.*, kec.nama as nama_kecamatan, kr.name as nama_kriminalitas, kr.color   
+            SELECT l.*, kec.nama as nama_kecamatan, kr.name as nama_faskes, kr.color   
             FROM tb_laporan l
             LEFT JOIN tb_kecamatan kec ON kec.id = l.id_kecamatan
-            LEFT JOIN tb_kriminalitas kr ON kr.id = l.id_kriminalitas 
+            LEFT JOIN tb_faskes kr ON kr.id = l.id_faskes 
             WHERE l.status = 1 
-            AND l.id_kriminalitas = " . $id_kriminalitas . " 
+            AND l.id_faskes = " . $id_faskes . " 
             AND YEAR(l.tanggal) = '" . $year . "' 
         ")->result_array();
 
@@ -118,7 +118,7 @@ class Post extends CI_Controller
             $buff = array(
                 $i,
                 $key['nama_kecamatan'],
-                $key['nama_kriminalitas'],
+                $key['nama_faskes'],
                 $key['alamat'],
                 $key['keterangan'],
                 $key['longitude'],
