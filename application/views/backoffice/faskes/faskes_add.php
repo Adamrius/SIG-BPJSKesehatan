@@ -123,7 +123,7 @@
                 },
                 kode_faskes: {
                     required: true,
-                    maxlength: 9
+                    maxlength: 8
                 },
                 nama: {
                     required: true
