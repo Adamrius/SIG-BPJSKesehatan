@@ -8,7 +8,7 @@
 @import url(../vendor/select2/css/select2.min.css);
 
 :root {
-    --accent: #f4b942;
+    --accent: #00E396;
     --second: #00a2ff;
     --third: #375773;
 
@@ -1264,6 +1264,34 @@
 
 
 .section-maps { position: relative; overflow: hidden; height: calc(100vh); }
+
+.section-maps .toggle-side { 
+    position: absolute; 
+    top: 85px; 
+    left: 20px; 
+    width: auto;
+    border-radius: 5px; 
+    padding: 5px 10px;
+    background: var(--second); 
+    z-index: 11; 
+    text-align: center; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    box-shadow: 0 0.125rem 1.25rem rgba(0, 0, 0, 0.055) !important; 
+}
+.section-maps .toggle-side .icons { font-size: 20px; margin-right: 10px; }
+.section-maps .toggle-side span { font-weight: 500; }
+
+.section-maps .side-area { background: var(--white); position: fixed; top: 0; right: 0; width: 500px; height: 100%; z-index: 11; transform: translateY(-100%); -webkit-transition: all .5s ease-out; -moz-transition: all .5s ease-out; -ms-transition: all .5s ease-out; -o-transition: all .5s ease-out; transition: all .5s ease-out; }
+.section-maps .side-area.active { transform: translateX(0); -webkit-transition: all .5s ease-out; -moz-transition: all .5s ease-out; -ms-transition: all .5s ease-out; -o-transition: all .5s ease-out; transition: all .5s ease-out; }
+.section-maps .side-area .side-inner { position: relative; padding: 90px 20px; }
+.section-maps .side-area .side-inner .title { font-weight: bold; margin-bottom: 20px; }
+.section-maps .side-area .side-inner .close-side { position: absolute; top: 90px; right: 20px; width: 20px; height: 20px; }
+.section-maps .side-area .side-inner .close-side .icons { font-size: 20px !important; }
+
+
+
 .section-maps .top-section { position: absolute; top: 0; left: 0; width: 100%; z-index: 12;text-align: center; background: var(--second);  padding: 0.375rem; box-shadow: 0 0.125rem 1.25rem rgba(0, 0, 0, 0.055) !important; border-bottom-left-radius: 1.625rem; border-bottom-right-radius: 1.625rem; }
 .section-maps .top-section h2 { font-weight: 400; margin-bottom: 0; color: rgb(0, 0, 0); }
 
@@ -1322,3 +1350,16 @@
 #type-selector label { font-family: Roboto; font-size: 13px; font-weight: 300; }
 
 .pac-container { background-color: #FFF; z-index: 20; position: fixed; display: inline-block; float: left; }
+
+@media (max-width: 1200px) {
+    .section-maps .side-area { width: 400px; }
+}
+@media (max-width: 992px) {
+    .section-maps .top-section h2 { font-size: 24px; }
+}
+@media (max-width: 768px) {
+    .section-maps .top-section h2 { font-size: 20px; }
+}
+@media (max-width: 480px) {
+    .section-maps .side-area { width: 90%; }
+}

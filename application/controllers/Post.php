@@ -78,4 +78,47 @@ class Post extends CI_Controller
 
         echo json_encode($response);
     }
+    function fetch_data_faskes_chart()
+    {
+        // $get_kecamatan = $this->db->query("SELECT id, nama FROM tb_kecamatan WHERE id_kabupaten = 3302 ")->result_array();
+        $year  = date('Y');
+
+        $query = $this->db->query("
+            SELECT COUNT(l.id) as total_kriminal, kec.nama as nama_kecamatan 
+            FROM tb_laporan l
+            LEFT JOIN tb_kecamatan kec ON kec.id = l.id_kecamatan
+            WHERE l.status = 1 
+            AND YEAR(l.tanggal) = '" . $year . "'  
+            GROUP BY l.id_kecamatan 
+            ORDER BY nama_kecamatan ASC 
+        ")->result_array();
+
+        $data = '[';
+        $data .= '{';
+        $array_data = array();
+
+        foreach ($query as $key) {
+            $total = (float)$key['total_kriminal'];
+            array_push($array_data, $total);
+        }
+
+        $data .= '"name": "Total Fasilitas Kesehatan ",';
+        $data .= '"data": ' . json_encode($array_data) . '';
+        $data .= '}';
+        $data .= ']';
+
+
+        $kecamatan = array();
+
+        foreach ($query as $key2) {
+            array_push($kecamatan, $key2['nama_kecamatan']);
+        }
+
+        $response['title']        = 'Fasilitas BPJS Kesehatan Kabupaten Banyumas ' . $year;
+        $response['faskes'] = $data;
+        $response['kecamatan']    = $kecamatan;
+        $response['status']          = 1;
+
+        echo json_encode($response);
+    }
 }

@@ -1,5 +1,15 @@
 <section class="section-maps">
     <div class="container-fluid gx-0">
+        <a href="javascript:void(0)" class="toggle-side"><i class="icons fa fa-bars"></i> <span>Menu Grafik</span></a>
+
+        <div class="side-area">
+            <div class="side-inner">
+                <a href="javascript:void(0)" class="close-side" title="Close"><i class="icons fa fa-times"></i></a>
+                <div class="title" id="title_faskes_chart"></div>
+                <div id="load_data_faskes_chart"></div>
+            </div>
+        </div>
+
         <div class="top-section text-dark">
             <!-- <div class="container"> -->
             <marquee direction="left-" scrollamount="20" bgcolor='#00a2ff '>
@@ -29,6 +39,7 @@
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8kVr5dj4fb_s-s80rqu8mbehkHKRXgFY"></script> -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8kVr5dj4fb_s-s80rqu8mbehkHKRXgFY&libraries=places"></script>
+<script src="<?php echo base_url(); ?>assets/backoffice/vendors/apexcharts/apexcharts.min.js"></script>
 
 <script type="text/javascript">
     $(document).ready(function() {
@@ -44,7 +55,7 @@
                 cache: false,
                 dataType: 'json',
                 success: function(response) {
-                    console.log(response)
+                    // console.log(response)
                     var data_faskes = '';
                     $.each(response.data, function(i, val) {
                         data_faskes +=
@@ -669,5 +680,90 @@
             var id_faskes = $(this).attr('data');
             load_data_faskes(id_faskes);
         });
+
+        // -------------------------- Fasilitas Kesehatan Grafik --------------------------
+        load_data_faskes_chart();
+
+        var option_bar = {
+            chart: {
+                height: 500,
+                type: "bar",
+                parentHeightOffset: 0
+            },
+            series: [],
+            xaxis: {},
+            yaxis: {},
+            colors: ["#00E396", "#00E396", "#00E396", "#00E396"],
+            plotOptions: {
+                bar: {
+                    horizontal: true,
+                    columnWidth: '15%',
+                    endingShape: 'rounded'
+                },
+            },
+            dataLabels: {
+                enabled: true
+            },
+            grid: {
+                borderColor: "#277BC0",
+                padding: {
+                    bottom: 0
+                }
+            },
+            stroke: {
+                show: true,
+                width: 2,
+                colors: "#00E396"
+            },
+            noData: {
+                text: 'Data tidak tersedia...'
+            },
+            responsive: [{
+                breakpoint: 500,
+                options: {
+                    legend: {
+                        fontSize: "11px"
+                    }
+                }
+            }]
+        };
+
+        var data_faskes_chart = new ApexCharts(document.querySelector('#load_data_faskes_chart'), option_bar);
+        data_faskes_chart.render();
+
+        function load_data_faskes_chart() {
+            $.ajax({
+                method: 'get',
+                url: '<?php echo base_url(); ?>post/fetch_data_faskes_chart',
+                dataType: 'json',
+                success: function(response) {
+
+                    if (response.status == 1) {
+
+                        data_faskes_chart.updateSeries(JSON.parse(response.faskes));
+                        data_faskes_chart.updateOptions({
+                            xaxis: {
+                                type: 'text',
+                                categories: response.kecamatan
+                            },
+                        });
+
+                        $('#title_faskes_chart').html(response.title);
+                    }
+                }
+            });
+        }
+        // -------------------------- Fasilitas Kesehatan Grafik --------------------------
+
+
+        $('.toggle-side').on('click', function(e) {
+            $('.side-area').addClass('active');
+            e.preventDefault();
+        });
+        $('.close-side').on('click', function(e) {
+            $('.side-area').removeClass('active');
+            e.preventDefault();
+        });
+
     });
 </script>
