@@ -103,12 +103,12 @@ class Post extends CI_Controller
             array(
                 'No',
                 'Kecamatan',
-                'Kriminalitas',
+                'Fasilitas Kesehatan',
+                'Kode Faskes',
+                'Nama',
                 'Alamat',
-                'Keterangan',
-                'Longitude',
-                'Latitude',
-                'Tanggal',
+                'No Telp',
+                'Data Terakhir',
             )
         );
 
@@ -119,10 +119,10 @@ class Post extends CI_Controller
                 $i,
                 $key['nama_kecamatan'],
                 $key['nama_faskes'],
+                $key['kode_faskes'],
+                $key['nama'],
                 $key['alamat'],
-                $key['keterangan'],
-                $key['longitude'],
-                $key['latitude'],
+                $key['no_telp'],
                 $key['tanggal'],
             );
 
@@ -134,7 +134,7 @@ class Post extends CI_Controller
         $doc->setActiveSheetIndex(0);
         $doc->getActiveSheet()->getStyle('A1:J1')->getFont()->setBold(true);
         $doc->getActiveSheet()->fromArray($dataArray);
-        $filename = 'data-kriminalitas.xls';
+        $filename = 'Kategori Fasilitas Kesehatan.xls';
 
         header('Content-Type: application/vnd.ms-excel');
         header('Content-Disposition: attachment;filename="' . $filename . '"');

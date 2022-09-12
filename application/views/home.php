@@ -12,7 +12,7 @@
 
         <div class="top-section text-dark">
             <!-- <div class="container"> -->
-            <marquee direction="left-" scrollamount="20" bgcolor='#00a2ff '>
+            <marquee direction="left-" scrollamount="15" bgcolor='#00a2ff '>
                 <h1>
                     SELAMAT DATANG <img src="assets/backoffice/images/photo-removebg.png" height="48"> PEMETAAN FASILITAS BPJS KESEHATAN TINGKAT PERTAMA KABUPATEN BANYUMAS <img src="assets/backoffice/images/photo-removebg.png" height="48"> TERIMA KASIH
                 </h1>

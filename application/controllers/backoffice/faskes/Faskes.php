@@ -398,10 +398,9 @@ class Faskes extends CI_Controller
                 'Nama',
                 'Alamat',
                 'No Telp',
-                'Keterangan',
                 'Longitude',
                 'Latitude',
-                'Tanggal',
+                'Data Terakhir',
             )
         );
 
@@ -418,7 +417,6 @@ class Faskes extends CI_Controller
                 $key['nama'],
                 $key['alamat'],
                 $key['no_telp'],
-                $key['keterangan'],
                 $key['longitude'],
                 $key['latitude'],
                 $key['tanggal'],
@@ -432,7 +430,7 @@ class Faskes extends CI_Controller
         $doc->setActiveSheetIndex(0);
         $doc->getActiveSheet()->getStyle('A1:J1')->getFont()->setBold(true);
         $doc->getActiveSheet()->fromArray($dataArray);
-        $filename = 'Data Fasilitas Kesehatan.xls';
+        $filename = 'Semua Data Fasilitas Kesehatan.xls';
 
         header('Content-Type: application/vnd.ms-excel');
         header('Content-Disposition: attachment;filename="' . $filename . '"');
