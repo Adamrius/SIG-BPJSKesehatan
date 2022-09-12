@@ -155,7 +155,7 @@
                 },
                 kode_faskes: {
                     required: "Kode Faskes harus diisi",
-                    maxlength: "Telah melebihi 9 digit kode"
+                    maxlength: "Telah melebihi 8 digit kode"
                 },
                 nama: {
                     required: "Nama harus diisi"
