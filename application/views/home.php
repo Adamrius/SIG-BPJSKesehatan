@@ -58,12 +58,17 @@
                     // console.log(response)
                     var data_faskes = '';
                     $.each(response.data, function(i, val) {
+
+                        var trigger_filter = 'href="javascript:void(0)" class="trigg-filter" data="' + val.id + '"'
                         data_faskes +=
-                            '<a class="list-item trigg-filter" data="' + val.id + '">' +
-                            '<div class="marker"><i class="fa fa-hospital" style="color: ' + val.color + ';"></i></div>' +
-                            // '<div class="marker"><i class="fa fa-map-marker-alt" style="color: ' + val.color + ';"></i></div>' +
-                            '<div class="text section-description">' + val.name + ' (' + val.total + ')</div>' +
-                            '</a>';
+                            '<div class="list-item">' +
+                            '<div class="marker"><a ' + trigger_filter + '><i class="fa fa-hospital" style="color: ' + val.color + ';"></i></a></div>' +
+                            '<div class="text">' +
+                            '<span><a ' + trigger_filter + '>' + val.name + ' (' + val.total + ')</a></span>' +
+                            '<span class="text-muted"><a href="javascript:void(0)" class="trigg-download text-white" data="' + val.id + '"><i class="fa fa-download mr-2"></i> Download</a></span>' +
+                            '</div>' +
+                            '</div>';
+
                     });
                     $('#load_data_faskes').html(data_faskes);
                     var data_maps_array = [];
@@ -681,6 +686,14 @@
             load_data_faskes(id_faskes);
         });
 
+        $(document).on('click', '.trigg-download', function() {
+
+            var id_kriminalitas = $(this).attr('data');
+
+            url_export = '<?php echo base_url(); ?>post/export_data_kriminalitas?id=' + id_kriminalitas;
+            $(this).attr('href', url_export);
+        });
+
         // -------------------------- Fasilitas Kesehatan Grafik --------------------------
         load_data_faskes_chart();
 
@@ -764,6 +777,11 @@
             $('.side-area').removeClass('active');
             e.preventDefault();
         });
+        $('.toggle-side').on('click', function(e) {
+            $('.side-area').addClass('active');
+            e.preventDefault();
+        });
+
 
     });
 </script>

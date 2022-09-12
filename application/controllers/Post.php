@@ -78,6 +78,74 @@ class Post extends CI_Controller
 
         echo json_encode($response);
     }
+
+
+    function export_data_kriminalitas()
+    {
+        require_once APPPATH . 'third_party/PHPExcel/PHPExcel.php';
+
+        $year  = date('Y');
+
+        $id_kriminalitas = $this->input->get('id');
+
+        $data = $this->db->query("
+            SELECT l.*, kec.nama as nama_kecamatan, kr.name as nama_kriminalitas, kr.color   
+            FROM tb_laporan l
+            LEFT JOIN tb_kecamatan kec ON kec.id = l.id_kecamatan
+            LEFT JOIN tb_kriminalitas kr ON kr.id = l.id_kriminalitas 
+            WHERE l.status = 1 
+            AND l.id_kriminalitas = " . $id_kriminalitas . " 
+            AND YEAR(l.tanggal) = '" . $year . "' 
+        ")->result_array();
+
+
+        $dataArray = array(
+            array(
+                'No',
+                'Kecamatan',
+                'Kriminalitas',
+                'Alamat',
+                'Keterangan',
+                'Longitude',
+                'Latitude',
+                'Tanggal',
+            )
+        );
+
+        $i = 1;
+        foreach ($data as $key) {
+
+            $buff = array(
+                $i,
+                $key['nama_kecamatan'],
+                $key['nama_kriminalitas'],
+                $key['alamat'],
+                $key['keterangan'],
+                $key['longitude'],
+                $key['latitude'],
+                $key['tanggal'],
+            );
+
+            array_push($dataArray, $buff);
+            $i++;
+        }
+
+        $doc = new PHPExcel();
+        $doc->setActiveSheetIndex(0);
+        $doc->getActiveSheet()->getStyle('A1:J1')->getFont()->setBold(true);
+        $doc->getActiveSheet()->fromArray($dataArray);
+        $filename = 'data-kriminalitas.xls';
+
+        header('Content-Type: application/vnd.ms-excel');
+        header('Content-Disposition: attachment;filename="' . $filename . '"');
+        header('Cache-Control: max-age=0');
+
+        $objWriter = PHPExcel_IOFactory::createWriter($doc, 'Excel5');
+        ob_end_clean();
+        $objWriter->save('php://output');
+    }
+
+
     function fetch_data_faskes_chart()
     {
         // $get_kecamatan = $this->db->query("SELECT id, nama FROM tb_kecamatan WHERE id_kabupaten = 3302 ")->result_array();
