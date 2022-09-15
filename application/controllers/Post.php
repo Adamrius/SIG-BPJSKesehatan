@@ -80,7 +80,7 @@ class Post extends CI_Controller
     }
 
 
-    function export_data_kriminalitas()
+    function export_data_kesehatan()
     {
         require_once APPPATH . 'third_party/PHPExcel/PHPExcel.php';
 
@@ -152,7 +152,7 @@ class Post extends CI_Controller
         $year  = date('Y');
 
         $query = $this->db->query("
-            SELECT COUNT(l.id) as total_kriminal, kec.nama as nama_kecamatan 
+            SELECT COUNT(l.id) as total_faskes, kec.nama as nama_kecamatan 
             FROM tb_laporan l
             LEFT JOIN tb_kecamatan kec ON kec.id = l.id_kecamatan
             WHERE l.status = 1 
@@ -166,7 +166,7 @@ class Post extends CI_Controller
         $array_data = array();
 
         foreach ($query as $key) {
-            $total = (float)$key['total_kriminal'];
+            $total = (float)$key['total_faskes'];
             array_push($array_data, $total);
         }
 

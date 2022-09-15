@@ -688,9 +688,9 @@
 
         $(document).on('click', '.trigg-download', function() {
 
-            var id_kriminalitas = $(this).attr('data');
+            var id_faskes = $(this).attr('data');
 
-            url_export = '<?php echo base_url(); ?>post/export_data_kriminalitas?id=' + id_kriminalitas;
+            url_export = '<?php echo base_url(); ?>post/export_data_kesehatan?id=' + id_faskes;
             $(this).attr('href', url_export);
         });
 
